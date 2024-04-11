@@ -44,7 +44,7 @@ const Header = () => {
           />
         </Link>
 
-        <nav className="flex gap-5 items-center" role="menu">
+        <nav className="flex gap-5 xl:gap-14 items-center" role="menu">
           {NAV_LINKS.map((link) => (
             <Link
               href={link.href}
