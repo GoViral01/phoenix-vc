@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import VettedStarups from "@/components/home/VettedStarups";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Button from "@/components/shared/Button";
 
@@ -13,7 +14,7 @@ export default function Home() {
         </h2>
       </section>
 
-      <section className="py-10 md:py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
+      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
         <div className="mb-20 xl:mb-28">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
             <div className="bg-gray-200 h-64 sm:h-[500px] rounded-xl w-full lg:w-1/2"></div>
@@ -26,7 +27,7 @@ export default function Home() {
                 Empowering AI Innovators to Shape Tomorrow
               </h2>
 
-              <div className="text-sm sm:text-base">
+              <div className="text-sm sm:text-base text-black-8">
                 <p>
                   Our journey started with a strong belief in AI's potential to
                   transform industries and drive positive change. This led us to
@@ -51,6 +52,8 @@ export default function Home() {
 
         <WhyChooseUs />
       </section>
+
+      <VettedStarups />
     </div>
   );
 }
