@@ -3,7 +3,7 @@ import Button from "../shared/Button";
 
 const Hero = () => {
   return (
-    <div className="bg-darkBg h-[80vh] flex justify-center pt-20 md:pt-36 border-b-8 border-primary rounded-bl-[40px] rounded-br-[40px]">
+    <section className="bg-darkBg h-[80vh] flex justify-center pt-20 md:pt-36 border-b-8 border-primary rounded-bl-[40px] rounded-br-[40px]">
       <div className="text-center w-11/12 md:w-5/6 lg:w-2/3 mx-auto">
         <h1 className="text-4xl sm:text-5xl xl:text-6xl text-white font-semibold">
           Empowering AI Innovators to Shape the Future
@@ -24,7 +24,7 @@ const Hero = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

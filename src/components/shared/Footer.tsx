@@ -67,7 +67,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-darkBg text-white px-5 sm:px-10 2xl:px-20 flex items-center py-20">
+    <footer className="bg-darkBg text-white px-5 sm:px-10 xl:px-28 flex items-center py-20">
       <div className="w-full">
         <div className="flex justify-between lg:w-3/4">
           <Link

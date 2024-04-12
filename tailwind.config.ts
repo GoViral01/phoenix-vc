@@ -23,6 +23,8 @@ const config: Config = {
         black: {
           DEFAULT: "#000000",
           light: "#8C8C8C",
+          "12": "#141414",
+          "8": "#595959",
         },
       },
     },

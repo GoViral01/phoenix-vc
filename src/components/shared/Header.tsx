@@ -33,9 +33,9 @@ const Header = () => {
   ];
 
   return (
-    <header className="h-16 md:h-20 px-5 sm:px-10 2xl:px-20 flex items-center">
-      <div className="flex justify-between items-center w-full self-stretch">
-        <Link href="/" aria-label="home" className="max-w-40">
+    <header className="h-16 md:h-20 px-5 sm:px-10 xl:px-28 flex items-center">
+      <div className="flex gap-6 justify-between items-center w-full self-stretch">
+        <Link href="/" aria-label="home" className="w-32 md:w-40">
           <Image
             src="/logo.png"
             alt="Phoenix VC logo"
@@ -44,7 +44,10 @@ const Header = () => {
           />
         </Link>
 
-        <nav className="flex gap-5 xl:gap-14 items-center" role="menu">
+        <nav
+          className="hidden lg:flex gap-5 xl:gap-14 items-center"
+          role="menu"
+        >
           {NAV_LINKS.map((link) => (
             <Link
               href={link.href}
