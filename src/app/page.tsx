@@ -16,7 +16,7 @@ export default function Home() {
       <section className="py-10 md:py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
         <div className="mb-20 xl:mb-28">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
-            <div className="bg-gray-200 h-[500px] rounded-xl w-full lg:w-1/2"></div>
+            <div className="bg-gray-200 h-64 sm:h-[500px] rounded-xl w-full lg:w-1/2"></div>
 
             <div className="w-full lg:w-1/2">
               <span className="uppercase text-black-light text-xs sm:text-sm">

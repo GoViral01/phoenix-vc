@@ -69,11 +69,11 @@ const Footer = () => {
   return (
     <footer className="bg-darkBg text-white px-5 sm:px-10 xl:px-28 flex items-center py-20">
       <div className="w-full">
-        <div className="flex justify-between lg:w-3/4">
+        <div className="flex flex-col sm:flex-row gap-8 md:gap-10 items justify-between items-center sm:items-stretch text-center sm:text-left lg:w-3/4">
           <Link
             href="/"
             aria-label="home"
-            className="max-w-[122px] max-h-[122px]"
+            className="w-20 md:w-[122px] h-20 md:h-[122px]"
           >
             <Image
               src="/logo-for-footer.png"
@@ -126,7 +126,7 @@ const Footer = () => {
 
         <div className="bg-black-light w-full h-[1px] my-16" />
 
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row gap-5 justify-between items-center">
           <div className="text-black-light text-sm">
             &copy; 2024 Phoenix Venture Capital LTD. All rights reserved
           </div>
@@ -140,7 +140,7 @@ const Footer = () => {
             </Link>
             <Link
               href="/"
-              className="hover:text-black-light transition duration-300 border-r border-l border-black-light px-4"
+              className="hover:text-black-light transition duration-300 sm:border-r sm:border-l border-black-light sm:px-4"
             >
               Privacy Policy
             </Link>
