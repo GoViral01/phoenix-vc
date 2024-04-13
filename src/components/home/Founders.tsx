@@ -7,7 +7,7 @@ const Founders = () => {
   return (
     <section className="bg-darkBg">
       <div className="flex flex-col-reverse lg:flex-row">
-        <div className="flex-1 py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
+        <div className="w-full lg:w-1/2 py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
           <span className="uppercase text-black-light text-xs sm:text-sm">
             for founders
           </span>
@@ -56,12 +56,13 @@ const Founders = () => {
           </div>
         </div>
 
-        <div className="flex-1 shrink-0 self-stretch">
+        <div className="w-full lg:w-1/2 shrink-0 self-stretch">
           <Image
             src="/foundersCover.jpeg"
             alt=""
             width={800}
             height={800}
+            fetchPriority="high"
             className="object-cover w-full h-full max-h-[925px]"
           />
         </div>
