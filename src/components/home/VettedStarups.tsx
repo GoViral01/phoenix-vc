@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaChevronRight } from "react-icons/fa6";
+import Button from "../shared/Button";
 
 interface IVettedStartup {
   name: string;
@@ -65,58 +66,64 @@ const VettedStarups = () => {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
-        {VETTED_STARTUPS.map((startup, index) => (
-          <div
-            key={index}
-            className="border border-[#F0F0F0] px-4 md:px-6 pt-6 md:pt-10"
-          >
-            <Image
-              src={startup.image}
-              alt={startup.name}
-              width={80}
-              height={80}
-              fetchPriority="high"
-            />
+      <div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
+          {VETTED_STARTUPS.map((startup, index) => (
+            <div
+              key={index}
+              className="border border-[#F0F0F0] px-4 md:px-6 pt-6 md:pt-10"
+            >
+              <Image
+                src={startup.image}
+                alt={startup.name}
+                width={80}
+                height={80}
+                fetchPriority="high"
+              />
 
-            <div className="py-6 md:py-10">
-              <h3 className="text-black-12 font-semibold sm:text-lg md:text-xl mb-3">
-                {startup.name}
-              </h3>
-              <p className="text-black-8 text-sm md:text-base">
-                {startup.description}
-              </p>
+              <div className="py-6 md:py-10">
+                <h3 className="text-black-12 font-semibold sm:text-lg md:text-xl mb-3">
+                  {startup.name}
+                </h3>
+                <p className="text-black-8 text-sm md:text-base">
+                  {startup.description}
+                </p>
 
-              <div className="flex justify-between gap-4 mt-6 md:mt-8">
-                <div>
-                  <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
-                    floating stage
-                  </h3>
-                  <strong className="text-sm sm:text-base">
-                    {startup.floatingStage}
-                  </strong>
-                </div>
-                <div>
-                  <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
-                    Industry
-                  </h3>
-                  <strong className="text-sm sm:text-base">
-                    {startup.industry}
-                  </strong>
+                <div className="flex justify-between gap-4 mt-6 md:mt-8">
+                  <div>
+                    <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
+                      floating stage
+                    </h3>
+                    <strong className="text-sm sm:text-base">
+                      {startup.floatingStage}
+                    </strong>
+                  </div>
+                  <div>
+                    <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
+                      Industry
+                    </h3>
+                    <strong className="text-sm sm:text-base">
+                      {startup.industry}
+                    </strong>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <Link
-              href={startup.href}
-              aria-label={`learn more about ${startup.name}`}
-              className="flex items-center justify-between gap-3 uppercase hover:bg-black-light/20 transition duration-300 border-t border-t-[#F0F0F0] -mx-6 p-4 md:px-6 md:py-6 text-sm md:text-base text-[#595959] font-semibold"
-            >
-              Learn more
-              <FaChevronRight />
-            </Link>
-          </div>
-        ))}
+              <Link
+                href={startup.href}
+                aria-label={`learn more about ${startup.name}`}
+                className="flex items-center justify-between gap-3 uppercase hover:bg-black-light/20 transition duration-300 border-t border-t-[#F0F0F0] -mx-6 p-4 md:px-6 md:py-6 text-sm md:text-base text-[#595959] font-semibold"
+              >
+                Learn more
+                <FaChevronRight />
+              </Link>
+            </div>
+          ))}
+        </div>
+        <Button
+          buttonText="See all Vetted Startups"
+          className="text-white bg-primary mt-10 md:mt-20 py-4 px-2 block w-fit mx-auto"
+        />
       </div>
     </section>
   );
