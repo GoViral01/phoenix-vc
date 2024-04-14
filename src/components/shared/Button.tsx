@@ -12,7 +12,7 @@ interface IButton {
 const Button = ({ showIcon = false, buttonText, className }: IButton) => {
   return (
     <button
-      className={`flex items-center justify-center gap-3 rounded-lg font-semibold px-2 lg:px-6 transition duration-300 ${className}`}
+      className={`flex items-center justify-center gap-3 rounded-lg font-semibold px-3 sm:px-6 transition duration-300 ${className}`}
     >
       {buttonText}
       {showIcon && <FaArrowRight />}

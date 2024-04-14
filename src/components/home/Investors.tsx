@@ -5,7 +5,7 @@ import Button from "../shared/Button";
 
 const Investors = () => {
   return (
-    <section>
+    <section className="bg-[#F0F0F0]">
       <div className="flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/2 shrink-0 self-stretch">
           <Image
@@ -14,7 +14,7 @@ const Investors = () => {
             width={800}
             height={800}
             fetchPriority="high"
-            className="object-cover w-full h-full max-h-[925px]"
+            className="object-cover object-center w-full h-full max-h-[925px]"
           />
         </div>
         <div className="w-full lg:w-1/2 py-20 xl:py-32 px-5 sm:px-10 xl:px-28">

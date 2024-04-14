@@ -63,7 +63,7 @@ const Founders = () => {
             width={800}
             height={800}
             fetchPriority="high"
-            className="object-cover w-full h-full max-h-[925px]"
+            className="object-cover object-center w-full h-full max-h-[925px]"
           />
         </div>
       </div>

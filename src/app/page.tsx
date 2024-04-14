@@ -1,6 +1,8 @@
 import Founders from "@/components/home/Founders";
 import Hero from "@/components/home/Hero";
+import Investment from "@/components/home/Investment";
 import Investors from "@/components/home/Investors";
+import Testimonial from "@/components/home/Testimonial";
 import VettedStarups from "@/components/home/VettedStarups";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Button from "@/components/shared/Button";
@@ -58,6 +60,8 @@ export default function Home() {
       <VettedStarups />
       <Founders />
       <Investors />
+      <Testimonial />
+      <Investment />
     </div>
   );
 }
