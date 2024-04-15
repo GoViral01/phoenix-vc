@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Button from "./Button";
+import { twMerge } from "tailwind-merge";
+import { usePathname } from "next/navigation";
 
 interface INav {
   name: string;
@@ -12,25 +16,27 @@ const Header = () => {
   const NAV_LINKS: INav[] = [
     {
       name: "About us",
-      href: "/",
+      href: "",
     },
     {
       name: "Approach",
-      href: "/",
+      href: "",
     },
     {
       name: "Portfolio",
-      href: "/",
+      href: "",
     },
     {
       name: "Community",
-      href: "/",
+      href: "",
     },
     {
       name: "News",
-      href: "/",
+      href: "/news",
     },
   ];
+
+  const pathname = usePathname();
 
   return (
     <header className="h-16 md:h-20 px-5 sm:px-10 xl:px-28 flex items-center">
@@ -53,7 +59,10 @@ const Header = () => {
               href={link.href}
               key={link.name}
               role="menuitem"
-              className="uppercase text-sm font-semibold hover:text-primary transition duration-300"
+              className={twMerge(
+                "uppercase text-sm font-semibold hover:text-primary transition duration-300",
+                pathname === link.href && "text-primary"
+              )}
             >
               {link.name}
             </Link>
