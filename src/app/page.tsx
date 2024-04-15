@@ -6,6 +6,7 @@ import Testimonial from "@/components/home/Testimonial";
 import VettedStarups from "@/components/home/VettedStarups";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Button from "@/components/shared/Button";
+import NewsCard from "@/components/shared/NewsCard";
 
 export default function Home() {
   return (
@@ -62,6 +63,18 @@ export default function Home() {
       <Investors />
       <Testimonial />
       <Investment />
+
+      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
+        <h2 className="text-black-12 text-2xl sm:text-3xl xl:text-[40px] mb-6 mt-8 md:mt-10 font-semibold sm:leading-[48px] text-center">
+          Latest News and Developments
+        </h2>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 mt-7 md:mt-16">
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+        </div>
+      </section>
     </div>
   );
 }
