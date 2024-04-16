@@ -16,7 +16,7 @@ const Header = () => {
   const NAV_LINKS: INav[] = [
     {
       name: "About us",
-      href: "",
+      href: "/about",
     },
     {
       name: "Approach",
