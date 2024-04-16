@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../shared/Button";
+import LinkButton from "../shared/Button";
 
 const Hero = () => {
   return (
@@ -14,11 +14,13 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button
+          <LinkButton
+            href="#"
             buttonText="Become an Investor"
             className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
           />
-          <Button
+          <LinkButton
+            href="#"
             buttonText="Apply for Funds"
             className="bg-transparent text-white h-11 md:h-14 border border-primary hover:bg-primary"
           />

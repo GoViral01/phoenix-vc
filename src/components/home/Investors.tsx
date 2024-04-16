@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import Button from "../shared/Button";
+import LinkButton from "../shared/Button";
 
 const Investors = () => {
   return (
@@ -55,8 +55,9 @@ const Investors = () => {
           </div>
 
           <div className="mt-10 sm:mt-16">
-            <Button
+            <LinkButton
               buttonText="Become an Investor"
+              href="#"
               className="bg-primary hover:opacity-80 text-white h-11 md:h-14 w-full"
             />
           </div>

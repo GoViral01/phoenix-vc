@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../shared/Button";
+import LinkButton from "../shared/Button";
 import Image from "next/image";
 
 const Investment = () => {
@@ -40,8 +40,9 @@ const Investment = () => {
             </div>
           </div>
 
-          <Button
+          <LinkButton
             buttonText="Learn more"
+            href="#"
             aria-label="learn more about expansing AI powered financial analytics"
             className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10"
           />

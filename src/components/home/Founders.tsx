@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import Button from "../shared/Button";
+import LinkButton from "../shared/Button";
 
 const Founders = () => {
   return (
@@ -45,12 +45,14 @@ const Founders = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-10 sm:mt-16">
-            <Button
+            <LinkButton
               buttonText="Submit Your Pitch Deck"
+              href="#"
               className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
             />
-            <Button
+            <LinkButton
               buttonText="Create an Account"
+              href="#"
               className="bg-transparent text-white h-11 md:h-14 border border-primary hover:bg-primary"
             />
           </div>

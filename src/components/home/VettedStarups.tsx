@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaChevronRight } from "react-icons/fa6";
-import Button from "../shared/Button";
+import LinkButton from "../shared/Button";
 
 interface IVettedStartup {
   name: string;
@@ -120,8 +120,10 @@ const VettedStarups = () => {
             </div>
           ))}
         </div>
-        <Button
+
+        <LinkButton
           buttonText="See all Vetted Startups"
+          href="#"
           className="text-white bg-primary mt-10 md:mt-20 py-4 px-2 block w-fit mx-auto"
         />
       </div>

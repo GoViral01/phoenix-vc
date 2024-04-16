@@ -5,7 +5,7 @@ import Investors from "@/components/home/Investors";
 import Testimonial from "@/components/home/Testimonial";
 import VettedStarups from "@/components/home/VettedStarups";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
-import Button from "@/components/shared/Button";
+import LinkButton from "@/components/shared/Button";
 import NewsCard from "@/components/shared/NewsCard";
 import Image from "next/image";
 
@@ -56,8 +56,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <Button
+              <LinkButton
                 buttonText="Learn more about us"
+                href="/about"
                 showIcon={true}
                 className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10"
               />

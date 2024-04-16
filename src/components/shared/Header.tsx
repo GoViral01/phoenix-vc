@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Button from "./Button";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
+import LinkButton from "./Button";
 
 interface INav {
   name: string;
@@ -70,8 +70,9 @@ const Header = () => {
         </nav>
 
         <div>
-          <Button
+          <LinkButton
             buttonText="Investor Login"
+            href="/"
             showIcon={true}
             className="border border-primary text-primary text-sm h-11 hover:bg-primary hover:text-white transition duration-300"
           />
