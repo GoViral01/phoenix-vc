@@ -20,7 +20,7 @@ const Header = () => {
     },
     {
       name: "Approach",
-      href: "",
+      href: "/approach",
     },
     {
       name: "Portfolio",
