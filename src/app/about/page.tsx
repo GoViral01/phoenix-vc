@@ -23,8 +23,8 @@ const page = () => {
           </div>
 
           <div className="py-20 xl:py-32">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="rounded-lg overflow-clip sm:h-[636px]">
+            <div className="grid grid-cols-2 items-center gap-5 lg:gap-8">
+              <div className="rounded-lg overflow-clip max-h-96 bg-gray-100">
                 <Image
                   src="/teamMembers.jpeg"
                   alt="Team working together"
@@ -35,8 +35,8 @@ const page = () => {
                 />
               </div>
 
-              <div className="grid gap-8 xl:-mt-28">
-                <div className="rounded-lg overflow-clip">
+              <div className="grid gap-5 lg:gap-8 lg:-mt-28">
+                <div className="rounded-lg overflow-clip max-h-44 lg:w-5/6">
                   <Image
                     src="/dataSpace.jpeg"
                     alt=""
@@ -47,7 +47,7 @@ const page = () => {
                   />
                 </div>
 
-                <div className="rounded-lg overflow-clip">
+                <div className="rounded-lg overflow-clip max-h-96">
                   <Image
                     src="/coWorker.jpeg"
                     alt="Man working on a desktop"
