@@ -3,7 +3,7 @@ import Button from "../shared/Button";
 
 const Hero = () => {
   return (
-    <section className="bg-darkBg h-[80vh] flex justify-center pt-20 md:pt-36 border-b-8 border-primary rounded-bl-[40px] rounded-br-[40px]">
+    <section className="bg-darkBg bg-[url('/heroAI.gif')] bg-no-repeat bg-cover bg-center h-[80vh] flex justify-center items-center pt-5 sm:items-start md:pt-36 border-b-8 border-primary rounded-bl-[40px] rounded-br-[40px]">
       <div className="text-center w-11/12 md:w-5/6 lg:w-2/3 mx-auto">
         <h1 className="text-4xl sm:text-5xl xl:text-6xl text-white font-semibold">
           Empowering AI Innovators to Shape the Future
@@ -19,7 +19,7 @@ const Hero = () => {
             className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
           />
           <Button
-            buttonText="Become an Investor"
+            buttonText="Apply for Funds"
             className="bg-transparent text-white h-11 md:h-14 border border-primary hover:bg-primary"
           />
         </div>

@@ -19,6 +19,7 @@ const pages = () => {
             alt="holographic rendering"
             width={500}
             height={500}
+            fetchPriority="high"
             className="object-cover w-full h-full"
           />
         </div>

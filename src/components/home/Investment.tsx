@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../shared/Button";
+import Image from "next/image";
 
 const Investment = () => {
   return (
@@ -45,7 +46,17 @@ const Investment = () => {
             className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10"
           />
         </div>
-        <div className="bg-gray-200 h-64 sm:h-[500px] rounded-xl w-full lg:w-1/2"></div>
+
+        <div className="bg-gray-200 h-64 sm:h-[636px] rounded-xl overflow-clip w-full lg:w-1/2">
+          <Image
+            src="/investmentCover.jpeg"
+            alt="Bar chart analytic"
+            width={500}
+            height={500}
+            fetchPriority="high"
+            className="object-cover w-full h-full"
+          />
+        </div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import VettedStarups from "@/components/home/VettedStarups";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Button from "@/components/shared/Button";
 import NewsCard from "@/components/shared/NewsCard";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -22,7 +23,16 @@ export default function Home() {
       <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
         <div className="mb-20 xl:mb-28">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
-            <div className="bg-gray-200 h-64 sm:h-[500px] rounded-xl w-full lg:w-1/2"></div>
+            <div className="bg-gray-200 h-64 sm:h-[636px] rounded-xl overflow-clip w-full lg:w-1/2">
+              <Image
+                src="/vrGlass.jpeg"
+                alt="woman on VR glass"
+                width={500}
+                height={500}
+                fetchPriority="high"
+                className="object-cover w-full h-full"
+              />
+            </div>
 
             <div className="w-full lg:w-1/2">
               <span className="uppercase text-black-light text-xs sm:text-sm">
