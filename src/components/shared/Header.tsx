@@ -28,7 +28,7 @@ const Header = () => {
     },
     {
       name: "Community",
-      href: "",
+      href: "/community",
     },
     {
       name: "News",
