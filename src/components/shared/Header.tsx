@@ -15,6 +15,10 @@ interface INav {
 const Header = () => {
   const NAV_LINKS: INav[] = [
     {
+      name: "Home",
+      href: "/",
+    },
+    {
       name: "About us",
       href: "/about",
     },
@@ -30,25 +34,21 @@ const Header = () => {
       name: "Community",
       href: "/community",
     },
-    {
-      name: "News",
-      href: "/news",
-    },
   ];
 
   const pathname = usePathname();
 
   return (
-    <header className="h-16 md:h-20 px-5 sm:px-10 xl:px-28 flex items-center">
+    <header className="h-16 md:h-20 px-5 sm:px-10 xl:px-28 flex items-center border-b border-b-[#EAECED]">
       <div className="flex gap-6 justify-between items-center w-full self-stretch">
-        <Link href="/" aria-label="home" className="w-32 md:w-40">
+        <div className="w-32 md:w-40">
           <Image
             src="/logo.png"
             alt="Phoenix VC logo"
             width={500}
             height={500}
           />
-        </Link>
+        </div>
 
         <nav
           className="hidden lg:flex gap-5 xl:gap-14 items-center"

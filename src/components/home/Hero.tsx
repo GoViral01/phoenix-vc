@@ -22,7 +22,7 @@ const Hero = () => {
           <LinkButton
             href="#"
             buttonText="Apply for Funds"
-            className="bg-transparent text-white h-11 md:h-14 border border-primary hover:bg-primary"
+            className="bg-transparent text-white h-11 md:h-14 border border-white hover:bg-white hover:text-black-12"
           />
         </div>
       </div>

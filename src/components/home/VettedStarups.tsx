@@ -32,7 +32,7 @@ const VettedStarups = () => {
 
         <LinkButton
           buttonText="See all Vetted Startups"
-          href="#"
+          href="/community"
           className="text-white bg-primary mt-10 md:mt-20 py-4 px-2 block w-fit mx-auto"
         />
       </div>

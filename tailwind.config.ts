@@ -20,7 +20,7 @@ const config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#6200EE",
+          DEFAULT: "#00A1E6",
         },
         darkBg: {
           DEFAULT: "#0C0A1A",

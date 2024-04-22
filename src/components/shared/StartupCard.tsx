@@ -46,7 +46,7 @@ const StartupCard = () => {
   return VETTED_STARTUPS.map((startup, index) => (
     <div
       key={index}
-      className="border border-[#F0F0F0] px-4 md:px-6 pt-6 md:pt-10"
+      className="border border-[#F0F0F0] px-4 md:px-6 pt-6 md:pt-10 rounded-lg group hover:shadow-lg"
     >
       <Image
         src={startup.image}
@@ -85,7 +85,7 @@ const StartupCard = () => {
       <Link
         href={startup.href}
         aria-label={`learn more about ${startup.name}`}
-        className="flex items-center justify-between gap-3 uppercase hover:bg-black-light/20 transition duration-300 border-t border-t-[#F0F0F0] -mx-6 p-4 md:px-6 md:py-6 text-sm md:text-base text-[#595959] font-semibold"
+        className="group-hover:text-blue-500 flex items-center justify-between gap-3 uppercase transition duration-300 border-t border-t-[#F0F0F0] -mx-6 p-4 md:px-6 md:py-6 text-sm md:text-base text-[#595959] font-semibold"
       >
         Learn more
         <FaChevronRight />
