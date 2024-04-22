@@ -23,7 +23,7 @@ const page = () => {
           </div>
 
           <div className="py-20 xl:py-32">
-            <div className="grid grid-cols-2 items-center gap-5 lg:gap-8">
+            <div className="grid sm:grid-cols-2 items-center gap-5 lg:gap-8">
               <div className="rounded-lg overflow-clip max-h-96 bg-gray-100">
                 <Image
                   src="/teamMembers.jpeg"

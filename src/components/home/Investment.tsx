@@ -5,7 +5,7 @@ import Image from "next/image";
 const Investment = () => {
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-5 md:gap-10">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
         <div className="w-full lg:w-1/2">
           <span className="uppercase text-black-light text-xs sm:text-sm">
             Investment opportunities
@@ -41,7 +41,7 @@ const Investment = () => {
           </div>
 
           <LinkButton
-            buttonText="Learn more"
+            buttonText="Become an Investor"
             href="#"
             aria-label="learn more about expansing AI powered financial analytics"
             className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10"

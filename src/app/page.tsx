@@ -13,16 +13,16 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <section className="py-20 xl:py-32 text-center px-5">
+      {/* <section className="py-20 xl:py-32 text-center px-5">
         <h2 className="text-black-12 text-2xl sm:text-5xl font-semibold w-11/12 max-w-3xl mx-auto">
           We empower AI visionaries with resources and support to bring their
           ideas to life.
         </h2>
-      </section>
+      </section> */}
 
       <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
         <div className="mb-20 xl:mb-28">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
+          <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-5 md:gap-10">
             <div className="bg-gray-200 h-64 sm:h-[636px] rounded-xl overflow-clip w-full lg:w-1/2">
               <Image
                 src="/vrGlass.jpeg"
@@ -69,13 +69,13 @@ export default function Home() {
         <WhyChooseUs />
       </section>
 
-      <VettedStarups />
-      <Founders />
-      <Investors />
-      <Testimonial />
       <Investment />
+      <Founders />
+      <VettedStarups />
+      {/* <Investors />
+      <Testimonial /> */}
 
-      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
+      {/* <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
         <h2 className="text-black-12 text-2xl sm:text-3xl xl:text-[40px] mb-6 mt-8 md:mt-10 font-semibold sm:leading-[48px] text-center">
           Latest News and Developments
         </h2>
@@ -85,7 +85,7 @@ export default function Home() {
           <NewsCard />
           <NewsCard />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
