@@ -3,7 +3,7 @@ import LinkButton from "../shared/Button";
 
 const Hero = () => {
   return (
-    <section className="bg-darkBg bg-[url('/heroAI.gif')] bg-no-repeat bg-cover bg-center h-[80vh] flex justify-center items-center pt-5 sm:items-start md:pt-36">
+    <section className="bg-darkBg  bg-no-repeat bg-cover bg-center h-[80vh] flex justify-center items-center pt-5 sm:items-start md:pt-36">
       <div className="text-center w-11/12 md:w-5/6 lg:w-2/3 mx-auto">
         <h1 className="text-4xl sm:text-5xl xl:text-6xl text-white font-semibold">
           Empowering AI Innovators to Shape the Future

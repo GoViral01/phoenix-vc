@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Investment = () => {
   return (
-    <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
+    <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
         <div className="w-full lg:w-1/2">
           <span className="uppercase text-black-light text-xs sm:text-sm">

@@ -20,7 +20,7 @@ const LinkButton = ({
   return (
     <Link
       href={href}
-      className={`flex items-center justify-center gap-3 rounded-lg font-semibold px-3 sm:px-6 transition duration-300 ${className}`}
+      className={`uppercase flex items-center justify-center gap-3 rounded-lg font-semibold px-3 sm:px-6 transition duration-300 ${className}`}
     >
       {buttonText}
       {showIcon && <FaArrowRight />}

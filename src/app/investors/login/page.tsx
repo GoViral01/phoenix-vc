@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
-      <div className="lg:w-1/2 mx-auto">
+      <div className="lg:w-3/5 mx-auto">
         <div className="text-center">
           <h1 className="text-black-12 text-2xl sm:text-3xl xl:text-[48px] mb-6 font-semibold sm:leading-[48px]">
             Investor Registration
