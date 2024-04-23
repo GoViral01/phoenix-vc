@@ -15,7 +15,7 @@ const Hero = () => {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <LinkButton
-            href="#"
+            href="/investors/login"
             buttonText="Become an Investor"
             className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
           />

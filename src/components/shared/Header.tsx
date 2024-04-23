@@ -72,7 +72,7 @@ const Header = () => {
         <div>
           <LinkButton
             buttonText="Investor Login"
-            href="/"
+            href="/investors/login"
             showIcon={true}
             className="border border-primary text-primary text-sm h-11 hover:bg-primary hover:text-white transition duration-300"
           />
