@@ -20,7 +20,7 @@ export default function Home() {
         </h2>
       </section> */}
 
-      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
+      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0] border border-b-[#D9D9D9]">
         <div className="mb-20 xl:mb-28">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5 md:gap-10">
             <div className="bg-gray-200 h-64 sm:h-[636px] rounded-xl overflow-clip w-full lg:w-1/2">
@@ -59,14 +59,18 @@ export default function Home() {
               <LinkButton
                 buttonText="Learn more about us"
                 href="/about"
-                showIcon={true}
-                className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10"
+                className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10 hidden lg:flex"
               />
             </div>
           </div>
         </div>
 
         <WhyChooseUs />
+        <LinkButton
+          buttonText="Learn more about us"
+          href="/about"
+          className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10 lg:hidden"
+        />
       </section>
 
       <Investment />

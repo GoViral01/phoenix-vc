@@ -6,7 +6,7 @@ import LinkButton from "../shared/Button";
 const Founders = () => {
   return (
     <section className="bg-darkBg">
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col-reverse lg:flex-row">
         <div className="w-full lg:w-1/2 py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
           <span className="uppercase text-black-light text-xs sm:text-sm">
             for founders
@@ -47,7 +47,7 @@ const Founders = () => {
           <div className="mt-10 sm:mt-16">
             <LinkButton
               buttonText="Apply for Fund"
-              href="#"
+              href="/founders/register"
               className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
             />
           </div>
