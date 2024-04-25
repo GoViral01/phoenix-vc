@@ -1,5 +1,8 @@
-import Link from "next/link";
+"use client";
+
+import ContactForm from "@/components/founders/ContactForm";
 import React, { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 const page = () => {
   const steps = ["Contact Info", "Business Info", "Investment Details"];
@@ -24,126 +27,46 @@ const page = () => {
 
         <div className="text-center p-4 my-10 md:my-16 flex items-center justify-center gap-4">
           {steps.map((_, i) => (
-            <div className="stepper-item flex  gap-4 items-center  relative stepper_divider">
-              <div className="w-8 sm:w-10 h-8 sm:h-10 text-sm sm:text-base shrink-0 bg-[#EAECED] rounded-full flex items-center justify-center relative">
+            <div
+              className={twMerge(
+                "stepper-item flex  gap-4 items-center  relative stepper_divider",
+                activeStep > i + 1 && "after:!bg-primary"
+              )}
+            >
+              <div
+                className={twMerge(
+                  "w-8 sm:w-10 h-8 sm:h-10 text-sm sm:text-base shrink-0 bg-[#EAECED] rounded-full flex items-center justify-center relative",
+                  activeStep >= i + 1 && "bg-primary text-white"
+                )}
+              >
                 {i + 1}
               </div>
             </div>
           ))}
         </div>
 
-        <form aria-label="founders registration form">
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label className="font-medium mb-1" htmlFor="firstName">
-                First name
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                placeholder="Enter your first name"
-                className="w-full rounded border border-[#D1D5DB] p-4"
-              />
-            </div>
+        <ContactForm />
 
-            <div>
-              <label className="font-medium mb-1" htmlFor="lastName">
-                Last name
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                placeholder="Enter your last name"
-                className="w-full rounded border border-[#D1D5DB] p-4"
-              />
-            </div>
-          </div>
-
-          <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="email">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email address"
-              className="w-full rounded border border-[#D1D5DB] p-4"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="phoneNumber">
-              phoneNumber
-            </label>
-            <input
-              type="text"
-              id="phoneNumber"
-              placeholder="+2348123424823"
-              className="w-full rounded border border-[#D1D5DB] p-4"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="linkedIn">
-              LinkedIn
-            </label>
-            <input
-              type="text"
-              id="linkedIn"
-              placeholder="https://www.linkedin.com/my-profile"
-              className="w-full rounded border border-[#D1D5DB] p-4"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="message">
-              Tell us about your background
-            </label>
-            <textarea
-              id="message"
-              placeholder="Please tell us a bit about your background"
-              className="w-full rounded border border-[#D1D5DB] p-4 resize-none hover:resize-y"
-            />
-          </div>
-
-          <div className="mt-6">
-            <h2 className="font-semibold md:text-2xl xl:text-3xl mb-8">
-              Agreements
-            </h2>
-
-            <div className="mb-6">
-              <input type="checkbox" id="tosCheckbox" className="mr-2" />
-              <label htmlFor="tosCheckbox">
-                I confirm that your data is collected and stored (for more
-                details see our Privacy Policy and Terms of Service)
-              </label>
-            </div>
-
-            <div className="mb-6">
-              <input type="checkbox" id="tosConfirmCheckbox" className="mr-2" />
-              <label htmlFor="tosConfirmCheckbox">
-                I confirm that I have read the risk warning above
-              </label>
-            </div>
-
-            <div className="text-xs text-black-8 mb-8">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Mauris cursus nisi eget
-                tellus sagittis. Ultrices tristique eget velit ipsum lacus
-                cursus adipiscing sed. Malesuada et commodo velit donec vitae
-                ligula. Vel feugiat in pellentesque lacinia sem sagittis tempus.
-                Viverra arcu consectetur sed risus tempor odio risus viverra
-                aliquam. Vel pretium ut morbi maecenas odio condimentum purus
-                ut. Cras et condimentum morbi malesuada. Vel nibh blandit
-                scelerisque ut etiam egestas lorem tincidunt.
-              </p>
-            </div>
-
-            <button className="bg-primary hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px]">
-              Become an investor
+        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4">
+          {activeStep > 1 && (
+            <button
+              onClick={() => setAciveStep((prev) => prev - 1)}
+              className="border border-black-12 rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold hover:bg-black-12 hover:text-white"
+            >
+              Back
             </button>
-          </div>
-        </form>
+          )}
+          <button
+            onClick={() => setAciveStep((prev) => prev + 1)}
+            className={twMerge(
+              "bg-black-12 hover:bg-black-8 text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold",
+              activeStep === steps.length &&
+                "bg-primary hover:bg-primary-dark text-white"
+            )}
+          >
+            {activeStep === steps.length ? "Apply for funds" : "Next"}
+          </button>
+        </div>
       </div>
     </section>
   );
