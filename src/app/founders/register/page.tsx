@@ -1,13 +1,16 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const page = () => {
+  const steps = ["Contact Info", "Business Info", "Investment Details"];
+  const [activeStep, setAciveStep] = useState<number>(1);
+
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
       <div className="lg:w-3/5 mx-auto">
         <div className="text-center">
           <h1 className="text-black-12 text-2xl sm:text-3xl xl:text-[48px] mb-6 font-semibold sm:leading-[48px]">
-            Investor Registration
+            Startup Registration
           </h1>
           <div className="text-sm sm:text-base text-black-8">
             <p>
@@ -19,11 +22,17 @@ const page = () => {
           </div>
         </div>
 
-        <div className="text-center text-white  p-4 my-10 md:my-16">
-          <p>stepper here</p>
+        <div className="text-center p-4 my-10 md:my-16 flex items-center justify-center gap-4">
+          {steps.map((_, i) => (
+            <div className="stepper-item flex  gap-4 items-center  relative stepper_divider">
+              <div className="w-8 sm:w-10 h-8 sm:h-10 text-sm sm:text-base shrink-0 bg-[#EAECED] rounded-full flex items-center justify-center relative">
+                {i + 1}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <form aria-label="investor registration form">
+        <form aria-label="founders registration form">
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <div>
               <label className="font-medium mb-1" htmlFor="firstName">

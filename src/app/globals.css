@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* *:focus {
-  outline: 1px solid #8c8c8c;
-} */
+.stepper-item:not(:last-of-type) {
+  @apply flex-1;
+}
+
+.stepper_divider:not(:last-of-type)::after {
+  @apply content-[''] h-2 rounded-full bg-[#EAECED] w-full block;
+}
