@@ -1,12 +1,12 @@
 "use client";
 
+import React, { useState } from "react";
 import BusinessInfoForm from "@/components/founders/BusinessInfoForm";
 import ContactForm from "@/components/founders/ContactForm";
 import InvestmentDetailsForm from "@/components/founders/InvestmentDetailsForm";
-import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const page = () => {
+const FounderRegister = () => {
   const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
   const [activeStep, setAciveStep] = useState<number>(1);
 
@@ -78,4 +78,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default FounderRegister;
