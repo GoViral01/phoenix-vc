@@ -1,11 +1,13 @@
 "use client";
 
+import BusinessInfoForm from "@/components/founders/BusinessInfoForm";
 import ContactForm from "@/components/founders/ContactForm";
+import InvestmentDetailsForm from "@/components/founders/InvestmentDetailsForm";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 const page = () => {
-  const steps = ["Contact Info", "Business Info", "Investment Details"];
+  const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
   const [activeStep, setAciveStep] = useState<number>(1);
 
   return (
@@ -28,6 +30,7 @@ const page = () => {
         <div className="text-center p-4 my-10 md:my-16 flex items-center justify-center gap-4">
           {steps.map((_, i) => (
             <div
+              key={i}
               className={twMerge(
                 "stepper-item flex  gap-4 items-center  relative stepper_divider",
                 activeStep > i + 1 && "after:!bg-primary"
@@ -45,7 +48,9 @@ const page = () => {
           ))}
         </div>
 
-        <ContactForm />
+        {activeStep === 1 && <ContactForm />}
+        {activeStep === 2 && <BusinessInfoForm />}
+        {activeStep === 3 && <InvestmentDetailsForm />}
 
         <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4">
           {activeStep > 1 && (
@@ -58,6 +63,7 @@ const page = () => {
           )}
           <button
             onClick={() => setAciveStep((prev) => prev + 1)}
+            disabled={activeStep > steps.length - 1}
             className={twMerge(
               "bg-black-12 hover:bg-black-8 text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold",
               activeStep === steps.length &&
