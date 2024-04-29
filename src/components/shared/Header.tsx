@@ -44,7 +44,7 @@ const Header = () => {
       <div className="flex gap-6 justify-between items-center w-full self-stretch">
         <div className="w-32 md:w-40">
           <Image
-            src="/logo.png"
+            src="/logoNew.png"
             alt="Phoenix VC logo"
             width={500}
             height={500}
