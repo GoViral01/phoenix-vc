@@ -117,7 +117,7 @@ const page = () => {
       </div>
 
       <div className="px-5 sm:px-10 w-full lg:w-1/2 max-w-xl mx-auto lg:m-0">
-        <span className="uppercase text-black-light text-xs sm:text-sm">
+        <span className="uppercase text-black-light text-xs sm:text-sm animate-pulse">
           coming soon
         </span>
         <h2 className="text-black-12 text-xl sm:text-2xl xl:text-3xl mb-6 mt-8 md:mt-10 font-semibold sm:leading-[48px]">
