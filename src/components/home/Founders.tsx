@@ -48,7 +48,7 @@ const Founders = () => {
             <LinkButton
               buttonText="Apply for Fund"
               href="/founders/register"
-              className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
+              className="bg-primary w-fit hover:opacity-80 text-white h-11 md:h-14"
             />
           </div>
         </div>
