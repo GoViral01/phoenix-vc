@@ -61,7 +61,7 @@ const Header = () => {
               key={link.name}
               role="menuitem"
               className={twMerge(
-                "uppercase text-sm font-semibold hover:text-primary transition duration-300",
+                "uppercase text-sm font-semibold hover:underline transition duration-300",
                 pathname === link.href && "text-primary"
               )}
             >
@@ -70,7 +70,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <div>
+        <div className="invisible">
           <LinkButton
             buttonText="Investor Login"
             href="/investors/login"
