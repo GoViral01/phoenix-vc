@@ -22,24 +22,24 @@ interface ISocials {
 const Footer = () => {
   const NAV_LINKS: INav[] = [
     {
-      name: "About us",
+      name: "Home",
       href: "/",
+    },
+    {
+      name: "About us",
+      href: "/about",
     },
     {
       name: "Approach",
-      href: "/",
+      href: "/approach",
     },
     {
       name: "Portfolio",
-      href: "/",
+      href: "/community",
     },
     {
       name: "Community",
-      href: "/",
-    },
-    {
-      name: "News",
-      href: "/",
+      href: "/community",
     },
   ];
 
@@ -67,7 +67,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-darkBg text-white px-5 sm:px-10 xl:px-28 flex items-center py-20">
+    <footer className="bg-[#F5F5F5] text-black-8 px-5 sm:px-10 xl:px-28 flex items-center py-20">
       <div className="w-full">
         <div className="flex flex-col sm:flex-row gap-8 md:gap-10 items justify-between items-center sm:items-stretch text-center sm:text-left lg:w-3/4">
           <Link
@@ -76,7 +76,7 @@ const Footer = () => {
             className="w-20 md:w-[122px] h-20 md:h-[122px]"
           >
             <Image
-              src="/logo-for-footer.png"
+              src="/logoNew.png"
               alt="Phoenix VC logo"
               width={500}
               height={500}

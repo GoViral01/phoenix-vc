@@ -29,7 +29,7 @@ const Header = () => {
     },
     {
       name: "Portfolio",
-      href: "",
+      href: "/community",
     },
     {
       name: "Community",

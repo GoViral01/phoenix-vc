@@ -5,7 +5,7 @@ import StartupCard from "../shared/StartupCard";
 const VettedStarups = () => {
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
-      <div className="mb-20 flex flex-col sm:flex-row gap-6 md:gap-10 justify-between sm:items-center">
+      <div className="mb-20 max-w-[690px] mx-auto text-center">
         <div className="flex-1">
           <span className="uppercase text-black-light text-xs sm:text-sm">
             directory of vetted startups
@@ -15,7 +15,7 @@ const VettedStarups = () => {
           </h2>
         </div>
 
-        <div className="flex-1 text-sm sm:text-base text-black-8">
+        <div className="flex-1 text-sm sm:text-base text-black-8 mt-6">
           <p>
             Explore our curated directory of vetted AI startups, showcasing
             cutting-edge technologies and promising ventures in diverse
@@ -26,9 +26,9 @@ const VettedStarups = () => {
       </div>
 
       <div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
+        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
           <StartupCard />
-        </div>
+        </div> */}
 
         <LinkButton
           buttonText="See all Vetted Startups"

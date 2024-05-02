@@ -58,8 +58,9 @@ export default function Home() {
 
               <LinkButton
                 buttonText="Learn more about us"
+                showIcon={true}
                 href="/about"
-                className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10 hidden lg:flex"
+                className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 tex-sm sm:tex-base mt-10 hidden lg:flex"
               />
             </div>
           </div>

@@ -40,12 +40,19 @@ const Investment = () => {
             </div>
           </div>
 
-          <LinkButton
-            buttonText="Become an Investor"
-            href="/investors/login"
-            aria-label="learn more about expansing AI powered financial analytics"
-            className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base mt-10"
-          />
+          <div className="flex gap-5 flex-col sm:flex-row mt-10">
+            <LinkButton
+              buttonText="Become an Investor"
+              href="/investors/login"
+              aria-label="learn more about expansing AI powered financial analytics"
+              className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base"
+            />
+            <LinkButton
+              href="/investment-opportunities"
+              buttonText="learn more"
+              className="bg-black-12 text-white h-11 md:h-14 border border-black-12 hover:bg-transparent hover:text-black-12"
+            />
+          </div>
         </div>
 
         <div className="bg-gray-200 h-64 sm:h-[636px] rounded-xl overflow-clip w-full lg:w-1/2">

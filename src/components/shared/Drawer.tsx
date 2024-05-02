@@ -35,7 +35,7 @@ export function NavDrawer() {
     },
     {
       name: "Portfolio",
-      href: "",
+      href: "/community",
     },
     {
       name: "Community",
