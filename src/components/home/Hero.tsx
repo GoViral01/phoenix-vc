@@ -16,7 +16,7 @@ const Hero = () => {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link
-            href="/founders/register"
+            href="/investors/register"
             className="uppercase flex items-center justify-center gap-3 rounded-lg font-semibold px-3 sm:px-6 transition duration-300 bg-primary hover:opacity-85 text-white h-11 md:h-14"
           >
             <Image src="/plant.svg" alt="" width={20} height={20} />

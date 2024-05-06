@@ -1,7 +1,35 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-const page = () => {
+const investorsLoginSchema = z.object({
+  first_name: z
+    .string({ required_error: "First name is required" })
+    .min(3, { message: "First name must be at least 3 characters." }),
+  last_name: z
+    .string({ required_error: "Last name is required" })
+    .min(3, { message: "Last name must be at least 3 characters." }),
+  email: z
+    .string({ required_error: "Email is required" })
+    .email({ message: "Please enter a valid email address." }),
+  location: z.string({ required_error: "Location is required" }),
+  linkedIn: z.string().optional(),
+  background: z.string({
+    required_error: "Please tell us a bit about your background",
+  }),
+});
+
+const InvestorsLogin = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof investorsLoginSchema>>({
+    resolver: zodResolver(investorsLoginSchema),
+  });
+
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
       <div className="lg:w-3/5 mx-auto">
@@ -147,4 +175,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default InvestorsLogin;
