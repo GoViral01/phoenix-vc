@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { z } from "zod";
@@ -6,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 const investorsLoginSchema = z.object({
   first_name: z
-    .string({ required_error: "First name is required" })
+    .string()
     .min(3, { message: "First name must be at least 3 characters." }),
   last_name: z
     .string({ required_error: "Last name is required" })
@@ -14,11 +16,21 @@ const investorsLoginSchema = z.object({
   email: z
     .string({ required_error: "Email is required" })
     .email({ message: "Please enter a valid email address." }),
-  location: z.string({ required_error: "Location is required" }),
-  linkedIn: z.string().optional(),
-  background: z.string({
-    required_error: "Please tell us a bit about your background",
+  location: z.string(),
+  tos: z.boolean({
+    required_error: "isActive is required",
+    invalid_type_error: "isActive must be a boolean",
+    message: "sss",
   }),
+  riskPolicy: z.boolean(),
+
+  linkedIn: z.string().optional(),
+  background: z
+    .string({
+      required_error: "Name is required",
+      invalid_type_error: "Name must be a string",
+    })
+    .min(3, { message: "Your story must be at least 20 characters long." }),
 });
 
 const InvestorsLogin = () => {
@@ -28,7 +40,23 @@ const InvestorsLogin = () => {
     formState: { errors },
   } = useForm<z.infer<typeof investorsLoginSchema>>({
     resolver: zodResolver(investorsLoginSchema),
+    mode: "onChange",
   });
+
+  const handleSubmitLogin = (data: z.infer<typeof investorsLoginSchema>) => {
+    fetch("https://api.apispreadsheets.com/data/KVbgNvV9JGxX3lj1/", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.status === 201) {
+        // SUCCESS
+        console.log("success");
+      } else {
+        // ERROR
+        console.log("error");
+      }
+    });
+  };
 
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
@@ -58,7 +86,10 @@ const InvestorsLogin = () => {
           </p>
         </div>
 
-        <form aria-label="investor registration form">
+        <form
+          aria-label="investor registration form"
+          onSubmit={handleSubmit(handleSubmitLogin)}
+        >
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <div>
               <label className="font-medium mb-1" htmlFor="firstName">
@@ -68,8 +99,14 @@ const InvestorsLogin = () => {
                 type="text"
                 id="firstName"
                 placeholder="Enter your first name"
+                {...register("first_name")}
                 className="w-full rounded border border-[#D1D5DB] p-4"
               />
+              {errors?.first_name && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.first_name.message}
+                </p>
+              )}
             </div>
 
             <div>
@@ -80,8 +117,14 @@ const InvestorsLogin = () => {
                 type="text"
                 id="lastName"
                 placeholder="Enter your last name"
+                {...register("last_name")}
                 className="w-full rounded border border-[#D1D5DB] p-4"
               />
+              {errors?.last_name && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.last_name.message}
+                </p>
+              )}
             </div>
           </div>
 
@@ -93,8 +136,14 @@ const InvestorsLogin = () => {
               type="email"
               id="email"
               placeholder="Enter your email address"
+              {...register("email")}
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
+            {errors?.email && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div className="mb-6">
@@ -105,8 +154,14 @@ const InvestorsLogin = () => {
               type="text"
               id="location"
               placeholder="Enter your location"
+              {...register("location")}
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
+            {errors?.location && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.location.message}
+              </p>
+            )}
           </div>
 
           <div className="mb-6">
@@ -117,8 +172,14 @@ const InvestorsLogin = () => {
               type="text"
               id="linkedIn"
               placeholder="https://www.linkedin.com/my-profile"
+              {...register("linkedIn")}
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
+            {errors?.linkedIn && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.linkedIn.message}
+              </p>
+            )}
           </div>
 
           <div className="mb-6">
@@ -128,8 +189,14 @@ const InvestorsLogin = () => {
             <textarea
               id="message"
               placeholder="Please tell us a bit about your background"
+              {...register("background")}
               className="w-full rounded border border-[#D1D5DB] p-4 resize-none hover:resize-y"
             />
+            {errors?.background && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.background.message}
+              </p>
+            )}
           </div>
 
           <div className="mt-6">
@@ -138,18 +205,38 @@ const InvestorsLogin = () => {
             </h2>
 
             <div className="mb-6">
-              <input type="checkbox" id="tosCheckbox" className="mr-2" />
+              <input
+                type="checkbox"
+                id="tosCheckbox"
+                {...register("tos")}
+                className="mr-2"
+              />
               <label htmlFor="tosCheckbox">
                 I confirm that your data is collected and stored (for more
                 details see our Privacy Policy and Terms of Service)
               </label>
+              {errors?.tos && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.tos.message}
+                </p>
+              )}
             </div>
 
             <div className="mb-6">
-              <input type="checkbox" id="tosConfirmCheckbox" className="mr-2" />
+              <input
+                type="checkbox"
+                id="tosConfirmCheckbox"
+                {...register("riskPolicy")}
+                className="mr-2"
+              />
               <label htmlFor="tosConfirmCheckbox">
                 I confirm that I have read the risk warning above
               </label>
+              {errors?.riskPolicy && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.riskPolicy.message}
+                </p>
+              )}
             </div>
 
             <div className="text-xs text-black-8 mb-8">
@@ -165,7 +252,10 @@ const InvestorsLogin = () => {
               </p>
             </div>
 
-            <button className="bg-primary hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px]">
+            <button
+              type="submit"
+              className="bg-primary hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px]"
+            >
               Become an investor
             </button>
           </div>
