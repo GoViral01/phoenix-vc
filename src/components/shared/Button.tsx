@@ -9,8 +9,6 @@ interface IButton {
   className?: string;
 }
 
-// this component will be changed back to a link later
-
 const LinkButton = ({
   showIcon = false,
   buttonText,

@@ -70,12 +70,12 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="invisible">
+        <div>
           <LinkButton
             buttonText="Investor Login"
             href="/investors/login"
             showIcon={true}
-            className="border border-primary text-primary text-sm h-11 hover:bg-primary hover:text-white transition duration-300 hidden lg:flex"
+            className="invisible border border-primary text-primary text-sm h-11 hover:bg-primary hover:text-white transition duration-300 hidden lg:flex"
           />
           <div className="lg:hidden">
             <NavDrawer />

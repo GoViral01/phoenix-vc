@@ -1,5 +1,6 @@
 import React from "react";
-import LinkButton from "../shared/Button";
+import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -14,16 +15,20 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <LinkButton
-            href="/investors/login"
-            buttonText="Become an Investor"
-            className="bg-primary hover:opacity-80 text-white h-11 md:h-14"
-          />
-          <LinkButton
+          <Link
             href="/founders/register"
-            buttonText="Apply for Funds"
-            className="bg-transparent text-white h-11 md:h-14 border border-white hover:bg-white hover:text-black-12"
-          />
+            className="uppercase flex items-center justify-center gap-3 rounded-lg font-semibold px-3 sm:px-6 transition duration-300 bg-primary hover:opacity-85 text-white h-11 md:h-14"
+          >
+            <Image src="/plant.svg" alt="" width={20} height={20} />
+            Become an investor
+          </Link>
+          <Link
+            href="/founders/register"
+            className="uppercase flex items-center justify-center gap-3 rounded-lg font-semibold px-3 sm:px-6 transition duration-300 bg-white text-primary h-11 md:h-14 border border-white hover:bg-transparent hover:text-white"
+          >
+            Apply for Funds
+            <Image src="/rocket.svg" alt="" width={20} height={20} />
+          </Link>
         </div>
       </div>
     </section>
