@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { ImSpinner9 } from "react-icons/im";
 
@@ -18,13 +18,13 @@ const investorsLoginSchema = z.object({
   email: z
     .string({ required_error: "Email is required" })
     .email({ message: "Please enter a valid email address." }),
-  location: z.string(),
-  tos: z.boolean({
-    required_error: "isActive is required",
-    invalid_type_error: "isActive must be a boolean",
-    message: "sss",
+  location: z.string().min(1, { message: "Location is required" }),
+  tos: z.boolean().refine((val) => val === true, {
+    message: "Please confirm you have read the Terms and Conditions",
   }),
-  riskPolicy: z.boolean(),
+  riskPolicy: z.boolean().refine((val) => val === true, {
+    message: "Please confirm you have read the risk warning",
+  }),
 
   linkedIn: z.string().optional(),
   background: z
@@ -35,32 +35,31 @@ const investorsLoginSchema = z.object({
     .min(3, { message: "Your story must be at least 20 characters long." }),
 });
 
+type TInvestorsLoginSchema = z.infer<typeof investorsLoginSchema>;
+
 const InvestorsLogin = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<z.infer<typeof investorsLoginSchema>>({
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<TInvestorsLoginSchema>({
     resolver: zodResolver(investorsLoginSchema),
     mode: "onChange",
   });
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const handleSubmitLogin = (data: z.infer<typeof investorsLoginSchema>) => {
-    setIsLoading(true);
+  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = (data) => {
     fetch("https://api.apispreadsheets.com/data/KVbgNvV9JGxX3lj1/", {
       method: "POST",
       body: JSON.stringify(data),
     }).then((res) => {
       if (res.status === 201) {
         // SUCCESS
-        setIsLoading(false);
-
+        console.log(isSubmitting);
         toast.success("Registration sucessful!");
       } else {
         // ERROR
-        setIsLoading(false);
+        console.log(isSubmitting);
 
         toast.error("Something went wrong! Please try again");
       }
@@ -263,12 +262,13 @@ const InvestorsLogin = () => {
 
             <button
               type="submit"
-              className="bg-primary min-w-36 text-center hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px]"
+              className="bg-primary min-w-36 text-center hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px] disabled:cursor-not-allowed disabled:opacity-50"
+              disabled={isSubmitting}
             >
-              {!isLoading ? (
-                "Become an investor"
-              ) : (
+              {isSubmitting ? (
                 <ImSpinner9 className="animate-spin text-2xl block mx-auto" />
+              ) : (
+                "Become an investor"
               )}
             </button>
           </div>
