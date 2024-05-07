@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { ImSpinner9 } from "react-icons/im";
 
 const investorsLoginSchema = z.object({
   first_name: z
@@ -43,17 +45,24 @@ const InvestorsLogin = () => {
     mode: "onChange",
   });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleSubmitLogin = (data: z.infer<typeof investorsLoginSchema>) => {
+    setIsLoading(true);
     fetch("https://api.apispreadsheets.com/data/KVbgNvV9JGxX3lj1/", {
       method: "POST",
       body: JSON.stringify(data),
     }).then((res) => {
       if (res.status === 201) {
         // SUCCESS
-        console.log("success");
+        setIsLoading(false);
+
+        toast.success("Registration sucessful!");
       } else {
         // ERROR
-        console.log("error");
+        setIsLoading(false);
+
+        toast.error("Something went wrong! Please try again");
       }
     });
   };
@@ -254,9 +263,13 @@ const InvestorsLogin = () => {
 
             <button
               type="submit"
-              className="bg-primary hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px]"
+              className="bg-primary min-w-36 text-center hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px]"
             >
-              Become an investor
+              {!isLoading ? (
+                "Become an investor"
+              ) : (
+                <ImSpinner9 className="animate-spin text-2xl block mx-auto" />
+              )}
             </button>
           </div>
         </form>
