@@ -48,22 +48,26 @@ const InvestorsLogin = () => {
     mode: "onChange",
   });
 
-  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = (data) => {
-    fetch("https://api.apispreadsheets.com/data/KVbgNvV9JGxX3lj1/", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }).then((res) => {
+  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = async (
+    data
+  ) => {
+    try {
+      const res = await fetch(
+        "https://api.apispreadsheets.com/data/KVbgNvV9JGxX3lj1/",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+
       if (res.status === 201) {
         // SUCCESS
-        console.log(isSubmitting);
         toast.success("Registration sucessful!");
-      } else {
-        // ERROR
-        console.log(isSubmitting);
-
-        toast.error("Something went wrong! Please try again");
+        reset();
       }
-    });
+    } catch (err) {
+      toast.error("Something went wrong! Please try again");
+    }
   };
 
   return (
@@ -262,7 +266,7 @@ const InvestorsLogin = () => {
 
             <button
               type="submit"
-              className="bg-primary min-w-36 text-center hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px] disabled:cursor-not-allowed disabled:opacity-50"
+              className="bg-primary min-w-36 text-center hover:bg-primary-dark font-semibold text-white uppercase rounded px-4 h-11 md:h-[52px] disabled:cursor-not-allowed disabled:opacity-90"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
