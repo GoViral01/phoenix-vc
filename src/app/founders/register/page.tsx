@@ -5,10 +5,21 @@ import BusinessInfoForm from "@/components/founders/BusinessInfoForm";
 import ContactForm from "@/components/founders/ContactForm";
 import InvestmentDetailsForm from "@/components/founders/InvestmentDetailsForm";
 import { twMerge } from "tailwind-merge";
+import { FormProvider, useForm } from "react-hook-form";
+import {
+  TFounderRegistrationSchema,
+  founderRegistrationSchema,
+} from "@/lib/types/type";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const FounderRegister = () => {
   const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
   const [activeStep, setAciveStep] = useState<number>(1);
+
+  const formMethods = useForm<TFounderRegistrationSchema>({
+    resolver: zodResolver(founderRegistrationSchema),
+    mode: "onChange",
+  });
 
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
@@ -48,9 +59,11 @@ const FounderRegister = () => {
           ))}
         </div>
 
-        {activeStep === 1 && <ContactForm />}
-        {activeStep === 2 && <BusinessInfoForm />}
-        {activeStep === 3 && <InvestmentDetailsForm />}
+        <FormProvider {...formMethods}>
+          {activeStep === 1 && <ContactForm />}
+          {activeStep === 2 && <BusinessInfoForm />}
+          {activeStep === 3 && <InvestmentDetailsForm />}
+        </FormProvider>
 
         <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4">
           {activeStep > 1 && (
