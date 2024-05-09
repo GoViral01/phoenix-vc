@@ -25,6 +25,37 @@ const FounderRegister = () => {
 
   // const fileUp = formMethods.watch("pitch_deck");
 
+  const handleRegisterFounder: SubmitHandler<
+    TFounderRegistrationSchema
+  > = async (data) => {
+    try {
+      // formMethods.setValue(data.pitch_deck, fileUp && fileUp[0]?.name);
+      // console.log(file);
+      // const v = formMethods.setValue("pitch_deck", "test");
+      // const newData = { ...data, v };
+      console.log(data);
+
+      const res = await fetch(
+        "https://api.apispreadsheets.com/data/eNYNNViB3aTzfowq/",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (res.status === 201) {
+        // SUCCESS
+        toast.success("Registration sucessful! Redirecting to homepage soon");
+        console.log(data);
+        formMethods.reset();
+
+        setTimeout(() => window.location.replace("/"), 3000);
+      }
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
       <div className="lg:w-3/5 mx-auto">
