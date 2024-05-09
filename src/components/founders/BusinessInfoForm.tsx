@@ -9,7 +9,7 @@ const BusinessInfoForm = () => {
   } = useFormContext<TFounderRegistrationSchema>();
 
   return (
-    <form aria-label="investor registration form">
+    <div aria-label="investor registration form">
       <div className="mb-6">
         <label className="font-medium mb-1" htmlFor="startupName">
           Startup Name
@@ -131,7 +131,7 @@ const BusinessInfoForm = () => {
           </p>
         )}
       </div>
-    </form>
+    </div>
   );
 };
 

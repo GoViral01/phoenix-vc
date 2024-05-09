@@ -10,7 +10,7 @@ const ContactForm = () => {
   } = useFormContext<TFounderRegistrationSchema>();
 
   return (
-    <form aria-label="founders registration form">
+    <div aria-label="founders registration form">
       <div className="grid md:grid-cols-2 gap-6 mb-6">
         <div>
           <label className="font-medium mb-1" htmlFor="firstName">
@@ -164,7 +164,7 @@ const ContactForm = () => {
           <p className="text-sm text-red-600 mt-1">{errors.facebook.message}</p>
         )}
       </div>
-    </form>
+    </div>
   );
 };
 

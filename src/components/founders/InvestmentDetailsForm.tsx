@@ -11,17 +11,21 @@ import {
 import { MdOutlineFileUpload } from "react-icons/md";
 import { useFormContext } from "react-hook-form";
 import { TFounderRegistrationSchema } from "@/lib/types/type";
+import { FaFile } from "react-icons/fa6";
 
 const InvestmentDetailsForm = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const {
     register,
     formState: { errors },
+    setValue,
+    watch,
   } = useFormContext<TFounderRegistrationSchema>();
 
+  // const fileName = watch("pitch_deck");
+
   return (
-    <form aria-label="investor registration form">
-      <label htmlFor="pitchDeckDoc" className="font-medium cursor-pointer mb-1">
+    <div aria-label="investor registration form">
+      {/* <label htmlFor="pitchDeckDoc" className="font-medium cursor-pointer mb-1">
         Upload pitch deck
         <div className="rounded border border-dashed border-[#BFBFBF] bg-[#FCFCFC] p-4 mb-6 flex flex-col items-center">
           <MdOutlineFileUpload className="text-black-8 text-2xl" />
@@ -31,7 +35,13 @@ const InvestmentDetailsForm = () => {
           <span className="text-black-light">
             upload .pdf, .ppt, .pptx, .docx, .png, .jpg
           </span>
-          <div>{selectedFile?.name}</div>
+
+          {fileName && (
+            <div className="font-semibold flex items-center gap-1 mt-3">
+              <FaFile />
+              {fileName[0]?.name}
+            </div>
+          )}
           <span className="text-sm text-black-8 mt-6">
             Maximun file size: 100MB
           </span>
@@ -40,15 +50,15 @@ const InvestmentDetailsForm = () => {
           type="file"
           id="pitchDeckDoc"
           accept=".pdf, .ppt, .pptx, .docx, .png, .jpg"
-          {...register("pitch_deck")}
+          // {...register("pitch_deck")}
           hidden
         />
-        {errors?.pitch_deck && (
+        {/* {errors?.pitch_deck && (
           <p className="text-sm text-red-600 mt-1">
             {errors.pitch_deck.message}
           </p>
-        )}
-      </label>
+        )} 
+      </label> */}
 
       <div className="mb-6">
         <label className="font-medium mb-1" htmlFor="businessStage">
@@ -166,7 +176,7 @@ const InvestmentDetailsForm = () => {
           )}
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

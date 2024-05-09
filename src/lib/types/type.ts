@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const MAX_FILE_SIZE = 1024 * 1024 * 100;
+const MAX_FILE_SIZE = 50000000000000000000000000000;
 const ACCEPTED_IMAGE_TYPES = [".pdf", ".ppt", ".pptx", ".docx", ".png", ".jpg"];
 
 export const founderRegistrationSchema = z.object({
@@ -23,44 +23,40 @@ export const founderRegistrationSchema = z.object({
   location: z.string().min(1, { message: "Location is required" }),
   linkedIn: z
     .string()
-    .min(1, { message: "Location is required" })
+    .min(1, { message: "LinkedIn is required" })
     .url({ message: "Enter a valid URL" }),
-  twitter: z.string().url({ message: "Enter a valid URL" }).optional(),
-  instagram: z.string().url({ message: "Enter a valid URL" }).optional(),
-  facebook: z.string().url({ message: "Enter a valid URL" }).optional(),
+  twitter: z.string().optional(),
+  instagram: z.string().optional(),
+  facebook: z.string().optional(),
   startup_name: z.string().min(1, { message: "Startup name is required" }),
   website: z
     .string()
     .min(1, { message: "Website is required" })
     .url({ message: "Enter a valid URL" }),
-  business_overview: z
-    .string()
-    .min(10, { message: "Business overview is required" }),
+  business_overview: z.string().min(10, {
+    message: "Business overview must be at least 10 characters long",
+  }),
   elevator_pitch: z
     .string()
-    .min(10, { message: "Elevator pitch is required" })
+    .min(10, { message: "Elevator pitch must be at least 10 characters long" })
     .max(80, { message: "Charaters cannot exceed 80" }),
   business_linkedIn: z
     .string()
     .min(1, { message: "LinkedIn URL is required" })
     .url({ message: "Enter a valid URL" }),
-  business_twitter: z.string().url({ message: "Enter a valid URL" }).optional(),
-  business_instagram: z
-    .string()
-    .url({ message: "Enter a valid URL" })
-    .optional(),
-  pitch_deck: z
-    .instanceof(File)
-    .refine(
-      (files: File) => !files || files.size <= MAX_FILE_SIZE,
-      `Max image size is 100MB.`
-    )
-    .refine(
-      (files) => ACCEPTED_IMAGE_TYPES.includes(files.type),
-      "Only .pdf, .ppt, .pptx, .docx, .png and .jpg formats are supported."
-    ),
-  business_stage: z.string().min(1, { message: "Choose a business stage" }),
-  niche: z.string().min(1, { message: "Choose a niche" }),
+  business_twitter: z.string().optional(),
+  business_instagram: z.string().optional(),
+  // pitch_deck: z.any().optional().default(""),
+  // .refine(
+  //   (files: File) => !files || files.size >= MAX_FILE_SIZE,
+  //   `Max image size is 100MB.`
+  // )
+  // .refine(
+  //   (files) => ACCEPTED_IMAGE_TYPES.includes(files.type),
+  //   "Only .pdf, .ppt, .pptx, .docx, .png and .jpg formats are supported."
+  // ),
+  business_stage: z.string().optional(),
+  niche: z.string().optional(),
   business_highlights: z
     .string()
     .min(1, { message: "Business hightlight is required" }),

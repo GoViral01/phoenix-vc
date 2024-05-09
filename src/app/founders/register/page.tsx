@@ -5,12 +5,14 @@ import BusinessInfoForm from "@/components/founders/BusinessInfoForm";
 import ContactForm from "@/components/founders/ContactForm";
 import InvestmentDetailsForm from "@/components/founders/InvestmentDetailsForm";
 import { twMerge } from "tailwind-merge";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import {
   TFounderRegistrationSchema,
   founderRegistrationSchema,
 } from "@/lib/types/type";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
+import { ImSpinner9 } from "react-icons/im";
 
 const FounderRegister = () => {
   const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
@@ -18,8 +20,10 @@ const FounderRegister = () => {
 
   const formMethods = useForm<TFounderRegistrationSchema>({
     resolver: zodResolver(founderRegistrationSchema),
-    mode: "onChange",
+    mode: "onBlur",
   });
+
+  // const fileUp = formMethods.watch("pitch_deck");
 
   return (
     <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
@@ -60,9 +64,11 @@ const FounderRegister = () => {
         </div>
 
         <FormProvider {...formMethods}>
-          {activeStep === 1 && <ContactForm />}
-          {activeStep === 2 && <BusinessInfoForm />}
-          {activeStep === 3 && <InvestmentDetailsForm />}
+          <form>
+            {activeStep === 1 && <ContactForm />}
+            {activeStep === 2 && <BusinessInfoForm />}
+            {activeStep === 3 && <InvestmentDetailsForm />}
+          </form>
         </FormProvider>
 
         <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4">
@@ -74,17 +80,28 @@ const FounderRegister = () => {
               Back
             </button>
           )}
-          <button
-            onClick={() => setAciveStep((prev) => prev + 1)}
-            disabled={activeStep > steps.length - 1}
-            className={twMerge(
-              "bg-black-12 hover:bg-black-8 text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold",
-              activeStep === steps.length &&
-                "bg-primary hover:bg-primary-dark text-white"
-            )}
-          >
-            {activeStep === steps.length ? "Apply for funds" : "Next"}
-          </button>
+
+          {activeStep === steps.length ? (
+            <button
+              onClick={formMethods.handleSubmit(handleRegisterFounder)}
+              className="bg-primary hover:bg-primary-dark text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold disabled:cursor-not-allowed disabled:opacity-90"
+              disabled={formMethods.formState.isSubmitting}
+            >
+              {formMethods.formState.isSubmitting ? (
+                <ImSpinner9 className="animate-spin text-2xl block mx-auto" />
+              ) : (
+                "Apply for funds"
+              )}
+            </button>
+          ) : (
+            <button
+              onClick={() => setAciveStep((prev) => prev + 1)}
+              disabled={activeStep > steps.length - 1}
+              className="bg-black-12 hover:bg-black-8 text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold"
+            >
+              Next
+            </button>
+          )}
         </div>
       </div>
     </section>
