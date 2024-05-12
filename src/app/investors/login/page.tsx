@@ -92,7 +92,7 @@ const InvestorsLogin = () => {
             Don't invest unless you're prepared to lose all the money you
             invest. This is a high risk investment and you are unlikely to be
             protected if something goes wrong.{" "}
-            <Link href="/investors/login" className="font-semibold underline">
+            <Link href="/risk-policy" className="font-semibold underline">
               Take 2 minutes to learn more.
             </Link>
           </p>
@@ -225,7 +225,15 @@ const InvestorsLogin = () => {
               />
               <label htmlFor="tosCheckbox">
                 I confirm that your data is collected and stored (for more
-                details see our Privacy Policy and Terms of Service)
+                details see our{" "}
+                <Link href="/privacy-policy" className="underline">
+                  Privacy Policy
+                </Link>{" "}
+                and{" "}
+                <Link href="/terms-of-service" className="underline">
+                  Terms of Service
+                </Link>
+                )
               </label>
               {errors?.tos && (
                 <p className="text-sm text-red-600 mt-1">

@@ -12,6 +12,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { useFormContext } from "react-hook-form";
 import { TFounderRegistrationSchema } from "@/lib/types/type";
 import { FaFile } from "react-icons/fa6";
+import Link from "next/link";
 
 const InvestmentDetailsForm = () => {
   const {
@@ -168,8 +169,14 @@ const InvestmentDetailsForm = () => {
             {...register("tos")}
           />
           <label htmlFor="tos">
-            I agree to Phoenix's Venture Capital's Terms of Service and Privacy
-            Policy
+            I agree to Phoenix's Venture Capital's{" "}
+            <Link href="/terms-of-service" className="underline">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy-policy" className="underline">
+              Privacy Policy
+            </Link>
           </label>
           {errors?.tos && (
             <p className="text-sm text-red-600 mt-1">{errors.tos.message}</p>
