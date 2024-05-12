@@ -25,6 +25,7 @@ const FounderRegister = () => {
   });
 
   // const fileUp = formMethods.watch("pitch_deck");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleRegisterFounder: SubmitHandler<
     TFounderRegistrationSchema
@@ -46,11 +47,13 @@ const FounderRegister = () => {
 
       if (res.status === 201) {
         // SUCCESS
-        toast.success("Registration sucessful! Redirecting to homepage soon");
-        console.log(data);
+        // toast.success("Registration sucessful! Redirecting to homepage soon");
+        // console.log(data);
+
+        setShowSuccessModal(true);
         formMethods.reset();
 
-        setTimeout(() => window.location.replace("/"), 3000);
+        // setTimeout(() => window.location.replace("/"), 3000);
       }
     } catch (err) {
       toast.error("Something went wrong");
@@ -135,7 +138,10 @@ const FounderRegister = () => {
             </button>
           )}
 
-          <SuccessModal />
+          <SuccessModal
+            showModal={showSuccessModal}
+            setShowModal={setShowSuccessModal}
+          />
         </div>
       </div>
     </section>

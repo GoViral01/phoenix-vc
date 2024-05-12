@@ -3,8 +3,16 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import LinkButton from "../shared/Button";
 
-const SuccessModal = () => (
-  <Dialog.Root open={true}>
+type TModal = {
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const SuccessModal = ({ showModal, setShowModal }: TModal) => (
+  <Dialog.Root
+    open={showModal}
+    onOpenChange={(open) => !open && setShowModal(false)}
+  >
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/40 data-[state=open]:animate-overlayShow fixed inset-0 z-[200]" />
       <Dialog.Content className="z-[200] py-10 px-5 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-2xl translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
