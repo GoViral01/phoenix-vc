@@ -133,19 +133,19 @@ const Footer = () => {
 
           <div className="flex gap-4 items-center text-sm text-[#BFBFBF]">
             <Link
-              href="/"
+              href="/terms-of-service"
               className="hover:text-black-light transition duration-300"
             >
               Terms of Service
             </Link>
             <Link
-              href="/"
+              href="/privacy-policy"
               className="hover:text-black-light transition duration-300 sm:border-r sm:border-l border-black-light sm:px-4"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/"
+              href="/cookie-policy"
               className="hover:text-black-light transition duration-300"
             >
               Cookie Settings
