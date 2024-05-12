@@ -45,7 +45,7 @@ const Investment = () => {
               buttonText="Become an Investor"
               href="/investors/login"
               aria-label="learn more about expansing AI powered financial analytics"
-              className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 tex-sm sm:tex-base"
+              className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 text-sm sm:tex-base"
             />
             <LinkButton
               href="/investment-opportunities"

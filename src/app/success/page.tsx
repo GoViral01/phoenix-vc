@@ -19,7 +19,7 @@ const Success = () => {
         <LinkButton
           buttonText="go back to homepage"
           href="/"
-          className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 tex-sm sm:tex-base mt-10 mx-auto"
+          className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 text-sm sm:tex-base mt-10 mx-auto"
         />
       </div>
     </div>

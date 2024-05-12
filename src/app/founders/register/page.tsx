@@ -13,6 +13,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { ImSpinner9 } from "react-icons/im";
+import SuccessModal from "@/components/founders/SuccessModal";
 
 const FounderRegister = () => {
   const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
@@ -133,6 +134,8 @@ const FounderRegister = () => {
               Next
             </button>
           )}
+
+          <SuccessModal />
         </div>
       </div>
     </section>
