@@ -1,0 +1,13 @@
+{
+  "id": "mig_cp0i7ea5fao4bb9249r0",
+  "parentID": "mig_cp0i789f4aj10fokvolg",
+  "checksum": "1:2582bb92f308da62f0161a7c2e868a85d4c925bd244b429bab8e1138c995bd24",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "first_name",
+        "table": "Founders"
+      }
+    }
+  ]
+}

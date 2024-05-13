@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0ifdi5fao4bb924a4g",
+  "parentID": "mig_cp0if7a5fao4bb924a3g",
+  "checksum": "1:7591e8350539dea9804dde315b36da909cf6785206f7e0cc80adad939bf09d81",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "niche",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

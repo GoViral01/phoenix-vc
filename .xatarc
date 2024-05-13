@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Fathi-Babayeju-s-workspace-6d1igb.us-east-1.xata.sh/db/phoenix-vc",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

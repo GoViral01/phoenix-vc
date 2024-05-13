@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0icvpf4aj10fokvp00",
+  "parentID": "mig_cp0icst7j4sqr5b8ol0g",
+  "checksum": "1:4ff209f0979677e6696f606ead1cc63b8712a0f7cc0ed8a9627075600257678f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "business_instagram",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0iclpf4aj10fokvou0",
+  "parentID": "mig_cp0icd1f4aj10fokvot0",
+  "checksum": "1:4a40709173b78b6fab5d5911a9607643fdf7ae46d416768b2832ffb39e081172",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "elevator_pitch",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

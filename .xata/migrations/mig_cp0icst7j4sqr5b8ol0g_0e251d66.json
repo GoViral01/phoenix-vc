@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0icst7j4sqr5b8ol0g",
+  "parentID": "mig_cp0icppf4aj10fokvov0",
+  "checksum": "1:0e251d66c7b3d55306c578943fb1c803b3228212edc9d60320d78e989cfa3f76",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "business_twitter",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

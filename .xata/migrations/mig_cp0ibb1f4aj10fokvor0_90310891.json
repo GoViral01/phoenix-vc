@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0ibb1f4aj10fokvor0",
+  "parentID": "mig_cp0ib7t7j4sqr5b8okug",
+  "checksum": "1:90310891660da473d30a2c3f10410a559dd75cabf706ae7bcf73dfbb58a2b86c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "facebook",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

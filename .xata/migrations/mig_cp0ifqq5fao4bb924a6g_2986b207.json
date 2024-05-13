@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0ifqq5fao4bb924a6g",
+  "parentID": "mig_cp0ifn57j4sqr5b8ol1g",
+  "checksum": "1:2986b20734c9901d5d24c2ea326dc34c9dc81fe182c67af465d724837895059c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "premoney_valuation",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

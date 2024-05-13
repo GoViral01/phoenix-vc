@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0icd1f4aj10fokvot0",
+  "parentID": "mig_cp0ic69f4aj10fokvos0",
+  "checksum": "1:343105b14c6cd90854683b82d093b4c95d7cee2c0274a9807d812ae5bf1b9c99",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "business_overview",
+          "type": "text"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

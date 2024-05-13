@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0if7a5fao4bb924a3g",
+  "parentID": "mig_cp0id69f4aj10fokvp10",
+  "checksum": "1:d12ed0a2bfe1d9fd91a83151478f9c1061d1deb941fa85e7d352fa67c9d8cbf7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "business_stage",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mig_cp0i789f4aj10fokvolg",
+  "parentID": "mig_cp0i6fpf4aj10fokvokg",
+  "checksum": "1:2a7af711cbe9af2182b0708be3414fbad445e8da20bf3cbce44ae11c61d4192b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "first_name",
+          "type": "string",
+          "defaultValue": "\"\""
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

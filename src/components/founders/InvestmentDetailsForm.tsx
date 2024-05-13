@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -70,10 +70,8 @@ const InvestmentDetailsForm = () => {
             <SelectValue placeholder="Select your business stage" />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
-              <SelectItem value="finech">Series A</SelectItem>
-              <SelectItem value="biotech">Series B</SelectItem>
-            </SelectGroup>
+            <SelectItem value="finech">Series A</SelectItem>
+            <SelectItem value="biotech">Series B</SelectItem>
           </SelectContent>
         </Select>
         {errors?.business_stage && (
@@ -92,12 +90,11 @@ const InvestmentDetailsForm = () => {
             <SelectValue placeholder="Select your business niche" />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
-              <SelectItem value="fintech">Fintech</SelectItem>
-              <SelectItem value="biotech">Biotech</SelectItem>
-            </SelectGroup>
+            <SelectItem value="fintech">Fintech</SelectItem>
+            <SelectItem value="biotech">Biotech</SelectItem>
           </SelectContent>
         </Select>
+
         {errors?.niche && (
           <p className="text-sm text-red-600 mt-1">{errors.niche.message}</p>
         )}

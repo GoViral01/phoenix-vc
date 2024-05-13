@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0icppf4aj10fokvov0",
+  "parentID": "mig_cp0iclpf4aj10fokvou0",
+  "checksum": "1:b8c1a037ee67f11f31329ab417f7c9da5b81001a6b5f2803127417ff002c622d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "business_linkedIn",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

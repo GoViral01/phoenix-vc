@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0id69f4aj10fokvp10",
+  "parentID": "mig_cp0icvpf4aj10fokvp00",
+  "checksum": "1:d34c85bd386af0bcbf5c44864eb43fd95e026fa3ee87912b29c3e886f57f7ed0",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "pitch_deck",
+          "type": "file[]"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}

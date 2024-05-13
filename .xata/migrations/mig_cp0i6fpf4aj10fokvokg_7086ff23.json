@@ -1,0 +1,11 @@
+{
+  "id": "mig_cp0i6fpf4aj10fokvokg",
+  "checksum": "1:7086ff23e44bbfaa9a07dbce8a83fecbb6616648e9a651beadac84fcbf702b51",
+  "operations": [
+    {
+      "addTable": {
+        "table": "Founders"
+      }
+    }
+  ]
+}

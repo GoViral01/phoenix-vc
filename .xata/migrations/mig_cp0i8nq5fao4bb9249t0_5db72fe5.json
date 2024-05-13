@@ -1,0 +1,13 @@
+{
+  "id": "mig_cp0i8nq5fao4bb9249t0",
+  "parentID": "mig_cp0i8ma5fao4bb9249s0",
+  "checksum": "1:5db72fe59eabe1f4c8f944db4134159664ef5cf2050d812793f6ef292129ed2b",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "email",
+        "table": "Founders"
+      }
+    }
+  ]
+}

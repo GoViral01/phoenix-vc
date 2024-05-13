@@ -1,0 +1,16 @@
+{
+  "id": "mig_cp0i9ii5fao4bb9249u0",
+  "parentID": "mig_cp0i8rd7j4sqr5b8okrg",
+  "checksum": "1:c453eb379a04aba42911900f65431c83013af3d2b3a1ef8e49d46e3a43b0d6a5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "phone_number",
+          "type": "string"
+        },
+        "table": "Founders"
+      }
+    }
+  ]
+}
