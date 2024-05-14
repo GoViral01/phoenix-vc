@@ -22,11 +22,11 @@ const InvestmentDetailsForm = () => {
     watch,
   } = useFormContext<TFounderRegistrationSchema>();
 
-  // const fileName = watch("pitch_deck");
+  const file = watch("pitch_deck");
 
   return (
     <div aria-label="investor registration form">
-      {/* <label htmlFor="pitchDeckDoc" className="font-medium cursor-pointer mb-1">
+      <label htmlFor="pitchDeckDoc" className="font-medium cursor-pointer mb-1">
         Upload pitch deck
         <div className="rounded border border-dashed border-[#BFBFBF] bg-[#FCFCFC] p-4 mb-6 flex flex-col items-center">
           <MdOutlineFileUpload className="text-black-8 text-2xl" />
@@ -37,10 +37,10 @@ const InvestmentDetailsForm = () => {
             upload .pdf, .ppt, .pptx, .docx, .png, .jpg
           </span>
 
-          {fileName && (
+          {file && (
             <div className="font-semibold flex items-center gap-1 mt-3">
               <FaFile />
-              {fileName[0]?.name}
+              {file.name}
             </div>
           )}
           <span className="text-sm text-black-8 mt-6">
@@ -51,15 +51,13 @@ const InvestmentDetailsForm = () => {
           type="file"
           id="pitchDeckDoc"
           accept=".pdf, .ppt, .pptx, .docx, .png, .jpg"
-          // {...register("pitch_deck")}
+          {...register("pitch_deck")}
           hidden
         />
-        {/* {errors?.pitch_deck && (
-          <p className="text-sm text-red-600 mt-1">
-            {errors.pitch_deck.message}
-          </p>
-        )} 
-      </label> */}
+        {errors?.pitch_deck && (
+          <p className="text-sm text-red-600 mt-1">{"Inavlid"}</p>
+        )}
+      </label>
 
       <div className="mb-6">
         <label className="font-medium mb-1" htmlFor="businessStage">

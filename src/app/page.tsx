@@ -60,7 +60,7 @@ export default function Home() {
                 buttonText="Learn more about us"
                 showIcon={true}
                 href="/about"
-                className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 text-sm sm:text-base mt-10 hidden lg:flex"
+                className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 text-sm sm:tex-base mt-10 hidden lg:flex"
               />
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function Home() {
           buttonText="Learn more about us"
           href="/about"
           showIcon={true}
-          className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 text-sm sm:text-base mt-10 lg:hidden"
+          className="bg-primary text-white hover:bg-[#003154] w-fit h-11 sm:h-14 text-sm sm:tex-base mt-10 lg:hidden"
         />
       </section>
 

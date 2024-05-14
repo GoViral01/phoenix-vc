@@ -14,6 +14,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { ImSpinner9 } from "react-icons/im";
 import SuccessModal from "@/components/founders/SuccessModal";
+import { any } from "zod";
+import { handleRegisterFounder } from "@/app/action";
 
 const FounderRegister = () => {
   const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
@@ -24,39 +26,34 @@ const FounderRegister = () => {
     mode: "onBlur",
   });
 
-  // const fileUp = formMethods.watch("pitch_deck");
+  const fileUp = formMethods.watch("pitch_deck");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleRegisterFounder: SubmitHandler<
+  const handleSubmitFounderRegistration: SubmitHandler<
     TFounderRegistrationSchema
   > = async (data) => {
     try {
-      // formMethods.setValue(data.pitch_deck, fileUp && fileUp[0]?.name);
-      // console.log(file);
-      // const v = formMethods.setValue("pitch_deck", "test");
-      // const newData = { ...data, v };
-      console.log(data);
+      const formData = new FormData();
+      const values = {
+        ...data,
+      };
+      Object.entries(values).forEach(([key, value]) => {
+        formData.set(key, value);
+      });
 
-      const res = await fetch(
-        "https://api.apispreadsheets.com/data/eNYNNViB3aTzfowq/",
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await handleRegisterFounder(formData);
 
-      if (res.status === 201) {
-        // SUCCESS
-        // toast.success("Registration sucessful! Redirecting to homepage soon");
-        // console.log(data);
+      // SUCCESS
+      // console.log(data);
 
+      if (!response?.error) {
         setShowSuccessModal(true);
         formMethods.reset();
-
-        // setTimeout(() => window.location.replace("/"), 3000);
       }
+
+      // setTimeout(() => window.location.replace("/"), 3000);
     } catch (err) {
-      toast.error("Something went wrong");
+      console.log(err);
     }
   };
 
@@ -118,7 +115,9 @@ const FounderRegister = () => {
 
           {activeStep === steps.length ? (
             <button
-              onClick={formMethods.handleSubmit(handleRegisterFounder)}
+              onClick={formMethods.handleSubmit(
+                handleSubmitFounderRegistration
+              )}
               className="bg-primary hover:bg-primary-dark text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold disabled:cursor-not-allowed disabled:opacity-90"
               disabled={formMethods.formState.isSubmitting}
             >

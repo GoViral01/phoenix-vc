@@ -46,13 +46,13 @@ export const founderRegistrationSchema = z.object({
     .url({ message: "Enter a valid URL" }),
   business_twitter: z.string().optional(),
   business_instagram: z.string().optional(),
-  // pitch_deck: z.any().optional().default(""),
+  pitch_deck: z.instanceof(File),
   // .refine(
-  //   (files: File) => !files || files.size >= MAX_FILE_SIZE,
+  //   (files: File) => !files || files?.size <= MAX_FILE_SIZE,
   //   `Max image size is 100MB.`
   // )
   // .refine(
-  //   (files) => ACCEPTED_IMAGE_TYPES.includes(files.type),
+  //   (files) => ACCEPTED_IMAGE_TYPES.includes(files?.type),
   //   "Only .pdf, .ppt, .pptx, .docx, .png and .jpg formats are supported."
   // ),
   business_stage: z.string().optional(),
