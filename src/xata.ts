@@ -32,6 +32,7 @@ const tables = [
       { name: "business_highlights", type: "string" },
       { name: "investment_sought", type: "string" },
       { name: "premoney_valuation", type: "string" },
+      { name: "other_niche", type: "string" },
     ],
   },
 ] as const;

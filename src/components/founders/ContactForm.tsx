@@ -1,13 +1,28 @@
+import React, { useMemo, useState } from "react";
 import { TFounderRegistrationSchema } from "@/lib/types/type";
-import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
 import { useFormContext } from "react-hook-form";
+import debounce from "lodash.debounce";
+import { getRecordByEmail } from "@/app/action";
 
 const ContactForm = () => {
   const {
     register,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useFormContext<TFounderRegistrationSchema>();
+
+  const debouncedOnEmailChanaged = useMemo(
+    () =>
+      debounce(async (email: string) => {
+        const { exist, message } = await getRecordByEmail(email);
+        if (exist) {
+          setError("root.emailAlreadyExists", { message });
+        }
+        clearErrors("root.isValidatingEmail");
+      }, 1000),
+    [setError, clearErrors]
+  );
 
   return (
     <div aria-label="founders registration form">
@@ -57,12 +72,28 @@ const ContactForm = () => {
           type="email"
           id="email"
           placeholder="Enter your email address"
-          {...register("email")}
+          {...register("email", {
+            onChange(event) {
+              setError("root.isValidatingEmail", {
+                message: "Validating email",
+              });
+              clearErrors("root.emailAlreadyExists");
+              debouncedOnEmailChanaged(event.target.value);
+            },
+          })}
           className="w-full rounded border border-[#D1D5DB] p-4"
         />
-        {errors?.email && (
-          <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>
+        {(errors?.email || errors.root?.emailAlreadyExists) && (
+          <p className="text-sm text-red-600 mt-1">
+            {errors.email?.message || errors.root?.emailAlreadyExists.message}
+          </p>
         )}
+
+        {!errors.email &&
+          !errors.root?.emailAlreadyExists &&
+          errors.root?.isValidatingEmail && (
+            <p className="text-sm text-green-600 mt-1">Validating</p>
+          )}
       </div>
 
       <div className="mb-6">

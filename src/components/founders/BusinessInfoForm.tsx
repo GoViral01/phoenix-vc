@@ -1,5 +1,5 @@
-import { TFounderRegistrationSchema } from "@/lib/types/type";
 import React from "react";
+import { TFounderRegistrationSchema } from "@/lib/types/type";
 import { useFormContext } from "react-hook-form";
 
 const BusinessInfoForm = () => {
