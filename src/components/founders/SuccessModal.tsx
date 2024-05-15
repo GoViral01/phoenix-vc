@@ -38,6 +38,14 @@ const SuccessModal = ({ showModal, setShowModal }: TModal) => (
             />
           </Dialog.Close>
         </div>
+
+        <div className="absolute top-5 right-5">
+          <Dialog.Close asChild>
+            <button className="hover:bg-gray-100 p-2 rounded-full">
+              <FaTimes />
+            </button>
+          </Dialog.Close>
+        </div>
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>
