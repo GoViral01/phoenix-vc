@@ -31,7 +31,7 @@ export const founderRegistrationSchema = z.object({
     .min(1, { message: "LinkedIn is required" })
     .refine((url) => isURL(url, { require_protocol: false }), "Invalid url")
     .refine(
-      (url) => /(https?:\/\/)?(.*?\.)?linkedin\.com\/in\/\w+\/?$/.test(url),
+      (url) => /(https?:\/\/)?(.*?\.)?linkedin\.com\/in\/[\w-_]+\/?$/,
       "Invalid linkedin profile url"
     ),
   twitter: z
@@ -42,7 +42,9 @@ export const founderRegistrationSchema = z.object({
     )
     .refine(
       (url) =>
-        !url ? true : /(https?:\/\/)?(.*?\.)?twitter\.com\/\w+\/?$/.test(url),
+        !url
+          ? true
+          : /(https?:\/\/)?(.*?\.)?twitter\.com\/[\w-_]+\/?$/.test(url),
       "Invalid twitter profile url"
     )
     .optional(),
@@ -54,7 +56,9 @@ export const founderRegistrationSchema = z.object({
     )
     .refine(
       (url) =>
-        !url ? true : /(https?:\/\/)?(.*?\.)?instagram\.com\/\w+\/?$/.test(url),
+        !url
+          ? true
+          : /(https?:\/\/)?(.*?\.)?instagram\.com\/[\w-_]+\/?$/.test(url),
       "Invalid instagram profile url"
     )
     .optional(),
@@ -66,7 +70,9 @@ export const founderRegistrationSchema = z.object({
     )
     .refine(
       (url) =>
-        !url ? true : /(https?:\/\/)?(.*?\.)?facebook\.com\/\w+\/?$/.test(url),
+        !url
+          ? true
+          : /(https?:\/\/)?(.*?\.)?facebook\.com\/[\w-_]+\/?$/.test(url),
       "Invalid facebook profile url"
     )
     .optional(),
@@ -97,9 +103,7 @@ export const founderRegistrationSchema = z.object({
     )
     .refine(
       (url) =>
-        !url
-          ? true
-          : /(https?:\/\/)?(.*?\.)?linkedin\.com\/in\/\w+\/?$/.test(url),
+        !url ? true : /(https?:\/\/)?(.*?\.)?linkedin\.com\/in\/[\w-_]+\/?$/,
       "Invalid linkedin profile url"
     ),
   business_twitter: z
@@ -110,7 +114,9 @@ export const founderRegistrationSchema = z.object({
     )
     .refine(
       (url) =>
-        !url ? true : /(https?:\/\/)?(.*?\.)?twitter\.com\/\w+\/?$/.test(url),
+        !url
+          ? true
+          : /(https?:\/\/)?(.*?\.)?twitter\.com\/[\w-_]+\/?$/.test(url),
       "Invalid twitter profile url"
     )
     .optional(),
@@ -122,7 +128,9 @@ export const founderRegistrationSchema = z.object({
     )
     .refine(
       (url) =>
-        !url ? true : /(https?:\/\/)?(.*?\.)?instagram\.com\/\w+\/?$/.test(url),
+        !url
+          ? true
+          : /(https?:\/\/)?(.*?\.)?instagram\.com\/[\w-_]+\/?$/.test(url),
       "Invalid instagram profile url"
     )
     .optional(),
