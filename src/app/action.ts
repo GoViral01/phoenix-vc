@@ -6,11 +6,9 @@ import isEmail from "validator/lib/isEmail";
 
 export async function handleRegisterFounder(formData: FormData) {
   try {
-    const {
-      pitch_deck,
-      tos: _tos,
-      ...data
-    } = founderRegistrationSchema.parse(Object.fromEntries(formData.entries()));
+    const { pitch_deck, ...data } = founderRegistrationSchema.parse(
+      Object.fromEntries(formData.entries())
+    );
     const client = getXataClient();
     const record = await client.db.Founders.create({
       ...data,
@@ -21,11 +19,16 @@ export async function handleRegisterFounder(formData: FormData) {
       { table: "Founders", column: "pitch_deck", record: record.id },
       pitch_deck
     );
+
+    return {
+      success: true,
+    };
   } catch (e) {
+    console.error(e);
     if (e instanceof ZodError) {
       return {
         error: "Invalid form values",
-        fields: e.formErrors.fieldErrors,
+        errorFields: e.formErrors.fieldErrors,
       };
     } else {
       return {

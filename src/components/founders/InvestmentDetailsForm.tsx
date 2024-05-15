@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -6,24 +7,84 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { MdOutlineFileUpload } from "react-icons/md";
-import { Controller, useFormContext } from "react-hook-form";
-import { TFounderRegistrationSchema } from "@/lib/types/type";
+import { Controller, useForm, useFormContext } from "react-hook-form";
+import {
+  TFounderRegistrationSchema,
+  founderRegistrationSchema,
+} from "@/lib/types/type";
 import { FaFile } from "react-icons/fa6";
 import Link from "next/link";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import FormNavigation from "@/app/founders/register/FormNavigation";
+import { ImSpinner9 } from "react-icons/im";
 
-const InvestmentDetailsForm = () => {
+interface Props {
+  onFinish: (data: InvestmentDetailsFormSchema) => void;
+  onBack?: () => void;
+}
+
+export const investmentDetailsFormSchema = founderRegistrationSchema
+  .pick({
+    pitch_deck: true,
+    business_stage: true,
+    niche: true,
+    other_niche: true,
+    business_highlights: true,
+    investment_sought: true,
+    premoney_valuation: true,
+  })
+  .extend({
+    tos: z
+      .boolean({
+        required_error: "Please confirm you have read the Terms & Conditions",
+      })
+      .refine((val) => val, {
+        message: "Please confirm you have read the Terms and Conditions",
+      }),
+  })
+  .superRefine((data, ctx) => {
+    if (data.niche === "others" && !data.other_niche) {
+      ctx.addIssue({
+        message: "Provide your niche",
+        path: ["other_niche"],
+        code: z.ZodIssueCode.custom,
+      });
+    }
+  });
+
+export type InvestmentDetailsFormSchema = z.infer<
+  typeof investmentDetailsFormSchema
+>;
+
+const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
+  const {
+    getValues,
+    formState: { isSubmitting: isSubmittingMainForm, errors: mainFormError },
+  } = useFormContext<
+    TFounderRegistrationSchema & InvestmentDetailsFormSchema
+  >();
   const {
     register,
-    formState: { errors },
     watch,
     control,
-  } = useFormContext<TFounderRegistrationSchema>();
+    handleSubmit,
+    formState: { errors, isValid: isFormValid },
+  } = useForm<InvestmentDetailsFormSchema>({
+    resolver: zodResolver(investmentDetailsFormSchema),
+    shouldFocusError: true,
+    defaultValues: async () => getValues(),
+    errors: mainFormError,
+    mode: "onTouched",
+  });
+
+  const onSubmit = handleSubmit(onFinish);
 
   const file = watch("pitch_deck");
-  const watcedNiche = watch("niche");
+  const watchedNiche = watch("niche");
 
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <div aria-label="investor registration form">
         <Controller
           control={control}
@@ -128,7 +189,7 @@ const InvestmentDetailsForm = () => {
           )}
         </div>
 
-        {watcedNiche === "others" && (
+        {watchedNiche === "others" && (
           <div className="mb-6">
             <label className="font-medium mb-1" htmlFor="otherNiche">
               Other Niche
@@ -210,7 +271,6 @@ const InvestmentDetailsForm = () => {
             <input
               type="checkbox"
               id="tos"
-              value="agree"
               className="mr-2"
               {...register("tos")}
             />
@@ -230,7 +290,28 @@ const InvestmentDetailsForm = () => {
           </div>
         </div>
       </div>
-    </>
+
+      <FormNavigation
+        hasPrev={true}
+        prevBtnProps={{
+          onClick: onBack,
+        }}
+        hasNext={true}
+        nextBtnProps={{
+          disabled: !isFormValid || isSubmittingMainForm,
+          type: "submit",
+          className:
+            "bg-primary hover:bg-primary-dark text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold disabled:cursor-not-allowed disabled:opacity-90",
+        }}
+        nextBtnLabel={
+          isSubmittingMainForm ? (
+            <ImSpinner9 className="animate-spin text-2xl block mx-auto" />
+          ) : (
+            "Apply for funds"
+          )
+        }
+      />
+    </form>
   );
 };
 

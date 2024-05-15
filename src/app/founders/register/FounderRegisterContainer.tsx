@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BusinessInfoForm from "@/components/founders/BusinessInfoForm";
 import ContactForm from "@/components/founders/ContactForm";
 import InvestmentDetailsForm from "@/components/founders/InvestmentDetailsForm";
@@ -11,88 +11,64 @@ import {
   founderRegistrationSchema,
 } from "@/lib/types/type";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ImSpinner9 } from "react-icons/im";
 import SuccessModal from "@/components/founders/SuccessModal";
 import { handleRegisterFounder } from "@/app/action";
-import clsx from "clsx";
-
-const stepFields: Record<number, (keyof TFounderRegistrationSchema)[]> = {
-  1: [
-    "first_name",
-    "last_name",
-    "email",
-    "phone_number",
-    "location",
-    "linkedIn",
-    "instagram",
-    "twitter",
-    "facebook",
-  ],
-  2: [
-    "startup_name",
-    "website",
-    "business_overview",
-    "elevator_pitch",
-    "business_linkedIn",
-    "business_instagram",
-    "business_twitter",
-  ],
-  3: [
-    "pitch_deck",
-    "niche",
-    "business_stage",
-    "investment_sought",
-    "premoney_valuation",
-    "other_niche",
-  ],
-};
 
 const FounderRegisterContainer = () => {
   const steps: any[] = ["Contact Info", "Business Info", "Investment Details"];
   const [activeStep, setAciveStep] = useState<number>(1);
+  const [completedStep, setCompletedStep] = useState<number>(0);
 
   const form = useForm<TFounderRegistrationSchema>({
     resolver: zodResolver(founderRegistrationSchema),
-    shouldFocusError: true,
-    mode: "onTouched",
   });
+  const { handleSubmit, reset, formState, setError, setValue } = form;
 
-  const { watch, handleSubmit, reset, formState, trigger, setError } = form;
+  useEffect(() => {
+    window.document.documentElement.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [activeStep]);
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleSubmitFounderRegistration = handleSubmit(
-    async ({ tos: _tos, ...data }) => {
-      try {
-        const formData = new FormData();
-        Object.entries(data).forEach(([key, value]) => {
-          formData.set(key, value);
-        });
+  const onSubmit = handleSubmit(async (data) => {
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      formData.set(key, value);
+    });
+    const response = await handleRegisterFounder(formData);
 
-        const response = await handleRegisterFounder(formData);
-
-        if (response?.fields) {
-          Object.entries(response.fields).forEach(([fieldName, errors]) =>
-            setError(fieldName as keyof TFounderRegistrationSchema, {
-              message: errors?.[0],
-            })
-          );
-        }
-
-        if (response?.error) {
-          setError("root.serverError", {
-            message: response.error,
-          });
-        } else {
-          setShowSuccessModal(true);
-          reset();
-        }
-
-        // setTimeout(() => window.location.replace("/"), 3000);
-      } catch (err) {
-        console.log(err);
-      }
+    if (response?.errorFields) {
+      Object.entries(response.errorFields).forEach(([fieldName, errors]) =>
+        setError(fieldName as keyof TFounderRegistrationSchema, {
+          message: errors?.[0],
+        })
+      );
     }
+
+    if (response?.error) {
+      setError("root.serverError", {
+        message: response.error,
+      });
+    }
+
+    if (response.success) {
+      reset();
+      setShowSuccessModal(true);
+      setCompletedStep(1);
+      setAciveStep(1);
+    }
+  });
+
+  const onStepFinish = useCallback(
+    (data: Partial<TFounderRegistrationSchema>) => {
+      Object.entries(data).forEach(([key, value]) => {
+        setValue(key as keyof TFounderRegistrationSchema, value);
+      });
+    },
+    [setValue]
   );
 
   return (
@@ -117,15 +93,14 @@ const FounderRegisterContainer = () => {
             <button
               key={i}
               className={twMerge(
-                "stepper-item flex  gap-4 items-center  relative stepper_divider",
+                "stepper-item flex  gap-4 items-center  relative stepper_divider disabled:cursor-not-allowed",
                 activeStep > i + 1 && "after:!bg-primary"
               )}
+              disabled={i + 1 > completedStep}
               onClick={async () => {
-                const isStepValid = await trigger(stepFields[activeStep], {
-                  shouldFocus: true,
-                });
-                if (isStepValid || activeStep > i + 1) {
-                  setAciveStep(i + 1);
+                const step = i + 1;
+                if (step <= completedStep) {
+                  setAciveStep(step);
                 }
               }}
             >
@@ -140,60 +115,49 @@ const FounderRegisterContainer = () => {
             </button>
           ))}
         </div>
-
-        <form method="POST" onSubmit={handleSubmitFounderRegistration}>
+        <FormProvider {...form}>
           {formState.errors.root?.serverError && (
             <p className="bg-red-700 text-white p-5 rounded-lg mb-5 text-sm">
               {formState.errors.root.serverError.message}
             </p>
           )}
-          <FormProvider {...form}>
-            {activeStep === 1 && <ContactForm />}
-            {activeStep === 2 && <BusinessInfoForm />}
-            {activeStep === 3 && <InvestmentDetailsForm />}
-          </FormProvider>
-          <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4">
-            {activeStep > 1 && (
-              <button
-                onClick={() => setAciveStep((prev) => prev - 1)}
-                className="border border-black-12 rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold hover:bg-black-12 hover:text-white"
-              >
-                Back
-              </button>
-            )}
-            <button
-              type={activeStep === steps.length ? "submit" : "button"}
-              onClick={async () => {
-                const isStepValid = await trigger(stepFields[activeStep]);
-                if (
-                  isStepValid &&
-                  !formState.errors.root?.isValidatingEmail &&
-                  !formState.errors.root?.emailAlreadyExists
-                ) {
-                  activeStep < steps.length && setAciveStep((prev) => prev + 1);
-                }
-              }}
-              disabled={formState.isSubmitting}
-              className={clsx(
-                "bg-black-12 hover:bg-black-8 text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold",
-                activeStep === steps.length &&
-                  "bg-primary hover:bg-primary-dark text-white rounded uppercase w-full sm:w-fit py-4 text-sm sm:text-base sm:px-8 font-semibold disabled:cursor-not-allowed disabled:opacity-90"
-              )}
-            >
-              {formState.isSubmitting && (
-                <ImSpinner9 className="animate-spin text-2xl block mx-auto" />
-              )}
-              {activeStep === steps.length
-                ? !formState.isSubmitting && "Apply for funds"
-                : "Next"}
-            </button>
 
-            <SuccessModal
-              showModal={showSuccessModal}
-              setShowModal={setShowSuccessModal}
+          {activeStep === 1 && (
+            <ContactForm
+              onFinish={(data) => {
+                onStepFinish(data);
+                setAciveStep(2);
+                setCompletedStep(1);
+              }}
             />
-          </div>
-        </form>
+          )}
+          {activeStep === 2 && (
+            <BusinessInfoForm
+              onFinish={(data) => {
+                onStepFinish(data);
+                setAciveStep(3);
+                setCompletedStep(2);
+              }}
+              onBack={() => setAciveStep(1)}
+            />
+          )}
+          {activeStep === 3 && (
+            <InvestmentDetailsForm
+              onBack={() => setAciveStep(2)}
+              onFinish={async (data) => {
+                setCompletedStep(3);
+                onStepFinish(data);
+                await onSubmit();
+                form.reset();
+              }}
+            />
+          )}
+        </FormProvider>
+
+        <SuccessModal
+          showModal={showSuccessModal}
+          setShowModal={setShowSuccessModal}
+        />
       </div>
     </section>
   );
