@@ -9,6 +9,8 @@ import { getRecordByEmail } from "@/app/action";
 import FormNavigation from "@/app/founders/register/FormNavigation";
 import { ZodSchema, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import FormRequiredIndicator from "../shared/FormLabel";
+import FormLabel from "../shared/FormLabel";
 
 interface Props {
   onFinish: (data: ContactFormSchema) => void;
@@ -70,9 +72,11 @@ const ContactForm = ({ onFinish }: Props) => {
       <div>
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label className="font-medium mb-1" htmlFor="firstName">
-              First name
-            </label>
+            <FormLabel
+              inputId="firstName"
+              labelText="First name"
+              required={true}
+            />
             <input
               type="text"
               id="firstName"
@@ -88,9 +92,11 @@ const ContactForm = ({ onFinish }: Props) => {
           </div>
 
           <div>
-            <label className="font-medium mb-1" htmlFor="lastName">
-              Last name
-            </label>
+            <FormLabel
+              inputId="lastName"
+              labelText="Last name"
+              required={true}
+            />
             <input
               type="text"
               id="lastName"
@@ -107,9 +113,7 @@ const ContactForm = ({ onFinish }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="email">
-            Email
-          </label>
+          <FormLabel inputId="email" labelText="Email" required={true} />
           <input
             type="email"
             id="email"
@@ -137,9 +141,11 @@ const ContactForm = ({ onFinish }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="phoneNumber">
-            Phone number
-          </label>
+          <FormLabel
+            inputId="phoneNumber"
+            labelText="Phone number"
+            required={true}
+          />
           <input
             type="text"
             id="phoneNumber"
@@ -155,9 +161,7 @@ const ContactForm = ({ onFinish }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="location">
-            Location
-          </label>
+          <FormLabel inputId="location" labelText="Location" required={true} />
           <input
             type="text"
             id="location"
@@ -173,9 +177,7 @@ const ContactForm = ({ onFinish }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="linkedIn">
-            LinkedIn
-          </label>
+          <FormLabel inputId="linkedIn" labelText="LinkedIn" required={true} />
           <input
             type="text"
             id="linkedIn"

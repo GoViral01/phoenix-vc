@@ -18,6 +18,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormNavigation from "@/app/founders/register/FormNavigation";
 import { ImSpinner9 } from "react-icons/im";
+import FormLabel from "../shared/FormLabel";
 
 interface Props {
   onFinish: (data: InvestmentDetailsFormSchema) => void;
@@ -95,7 +96,10 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
               className="font-medium cursor-pointer mb-1"
               onBlur={field.onBlur}
             >
-              Upload pitch deck
+              <div className="flex items-center gap-1">
+                <span className="pt-1 pointer-events-none text-red-500">*</span>
+                Upload pitch deck
+              </div>
               <div className="rounded border border-dashed border-[#BFBFBF] bg-[#FCFCFC] p-4 mb-6 flex flex-col items-center">
                 <MdOutlineFileUpload className="text-black-8 text-2xl" />
                 <strong className="text-primary my-1">
@@ -127,19 +131,21 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
                 multiple={false}
                 hidden
               />
+              {errors?.pitch_deck && (
+                <p className="text-sm text-red-600">
+                  {errors.pitch_deck.message}
+                </p>
+              )}
             </label>
           )}
         />
-        {errors?.pitch_deck && (
-          <p className="text-sm text-red-600 mt-1">
-            {errors.pitch_deck.message}
-          </p>
-        )}
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="businessStage">
-            Business Stage
-          </label>
+          <FormLabel
+            inputId="businessStage"
+            labelText="Business Stage"
+            required={true}
+          />
           <Controller
             control={control}
             name="business_stage"
@@ -157,16 +163,14 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
           />
 
           {errors?.business_stage && (
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-red-600">
               {errors.business_stage.message}
             </p>
           )}
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="niche">
-            Niche
-          </label>
+          <FormLabel inputId="niche" labelText="niche" required={true} />
           <Controller
             control={control}
             name="niche"
@@ -185,15 +189,17 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
           />
 
           {errors?.niche && (
-            <p className="text-sm text-red-600 mt-1">{errors.niche.message}</p>
+            <p className="text-sm text-red-600">{errors.niche.message}</p>
           )}
         </div>
 
         {watchedNiche === "others" && (
           <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="otherNiche">
-              Other Niche
-            </label>
+            <FormLabel
+              inputId="otherNiche"
+              labelText="Other Niche"
+              required={true}
+            />
             <input
               type="text"
               id="otherNiche"
@@ -202,7 +208,7 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
             {errors?.other_niche && (
-              <p className="text-sm text-red-600 mt-1">
+              <p className="text-sm text-red-600">
                 {errors.other_niche.message}
               </p>
             )}
@@ -210,9 +216,12 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
         )}
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="businessHighlight">
-            Business highlights (list the reasons why we should invest)
-          </label>
+          <FormLabel
+            inputId="businessHighlight"
+            labelText="Business highlights (list the reasons why we should invest)"
+            required={true}
+          />
+
           <textarea
             id="businessHighlight"
             placeholder="In 6-10 paragraph, list the reasons we should invest in your startup"
@@ -220,16 +229,19 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
             className="w-full rounded border border-[#D1D5DB] p-4 min-h-52 resize-none hover:resize-y"
           />
           {errors?.business_highlights && (
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-red-600">
               {errors.business_highlights.message}
             </p>
           )}
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="investmentSought">
-            Investment Sought
-          </label>
+          <FormLabel
+            inputId="investmentSought"
+            labelText=" Investment Sought"
+            required={true}
+          />
+
           <input
             type="text"
             id="investmentSought"
@@ -238,16 +250,18 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
             className="w-full rounded border border-[#D1D5DB] p-4"
           />
           {errors?.investment_sought && (
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-red-600">
               {errors.investment_sought.message}
             </p>
           )}
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="preMoneyValuation">
-            Pre-Money Valuation
-          </label>
+          <FormLabel
+            inputId="preMoneyValuation"
+            labelText="Pre-Money Valuation"
+            required={true}
+          />
           <input
             type="text"
             id="preMoneyValuation"
@@ -256,7 +270,7 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
             className="w-full rounded border border-[#D1D5DB] p-4"
           />
           {errors?.premoney_valuation && (
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-red-600">
               {errors.premoney_valuation.message}
             </p>
           )}
@@ -285,7 +299,7 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
               </Link>
             </label>
             {errors?.tos && (
-              <p className="text-sm text-red-600 mt-1">{errors.tos.message}</p>
+              <p className="text-sm text-red-600">{errors.tos.message}</p>
             )}
           </div>
         </div>

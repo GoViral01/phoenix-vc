@@ -6,6 +6,7 @@ import { useForm, useFormContext } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormNavigation from "@/app/founders/register/FormNavigation";
+import FormLabel from "../shared/FormLabel";
 
 interface Props {
   onFinish: (data: BusinessInfoFormSchema) => void;
@@ -47,9 +48,11 @@ const BusinessInfoForm = ({ onFinish, onBack }: Props) => {
     <form onSubmit={onSubmit}>
       <div aria-label="investor registration form">
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="startupName">
-            Startup Name
-          </label>
+          <FormLabel
+            inputId="startupName"
+            labelText="Startup Name"
+            required={true}
+          />
           <input
             type="text"
             id="startupName"
@@ -65,9 +68,7 @@ const BusinessInfoForm = ({ onFinish, onBack }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="website">
-            Website
-          </label>
+          <FormLabel inputId="website" labelText="Website" required={true} />
           <input
             type="text"
             id="website"
@@ -83,9 +84,11 @@ const BusinessInfoForm = ({ onFinish, onBack }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="businessOverview">
-            Business Overview
-          </label>
+          <FormLabel
+            inputId="businessOverview"
+            labelText="Business Overview"
+            required={true}
+          />
           <textarea
             id="businessOverview"
             placeholder="Describe what your business does in two paragraphs"
@@ -100,9 +103,11 @@ const BusinessInfoForm = ({ onFinish, onBack }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="elevatorPitch">
-            Elevator Pitch
-          </label>
+          <FormLabel
+            inputId="elevatorPitch"
+            labelText="Elevator Pitch"
+            required={true}
+          />
           <textarea
             id="elevatorPitch"
             placeholder="provide your elevator pitch between 50 to 80 characters long"
@@ -117,12 +122,10 @@ const BusinessInfoForm = ({ onFinish, onBack }: Props) => {
         </div>
 
         <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="BlinkedIn">
-            LinkedIn
-          </label>
+          <FormLabel inputId="linkedIn" labelText="LinkedIn" required={true} />
           <input
             type="text"
-            id="BlinkedIn"
+            id="linkedIn"
             placeholder="https://www.linkedin.com/my-profile"
             {...register("business_linkedIn")}
             className="w-full rounded border border-[#D1D5DB] p-4"
