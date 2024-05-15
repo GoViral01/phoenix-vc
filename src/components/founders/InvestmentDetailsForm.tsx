@@ -210,8 +210,8 @@ const InvestmentDetailsForm = () => {
             <input
               type="checkbox"
               id="tos"
-              className="mr-2"
               value="agree"
+              className="mr-2"
               {...register("tos")}
             />
             <label htmlFor="tos">

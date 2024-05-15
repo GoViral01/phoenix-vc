@@ -183,7 +183,9 @@ const FounderRegisterContainer = () => {
               {formState.isSubmitting && (
                 <ImSpinner9 className="animate-spin text-2xl block mx-auto" />
               )}
-              {activeStep === steps.length ? "Apply for funds" : "Next"}
+              {activeStep === steps.length
+                ? !formState.isSubmitting && "Apply for funds"
+                : "Next"}
             </button>
 
             <SuccessModal

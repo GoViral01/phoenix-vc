@@ -159,7 +159,7 @@ export const founderRegistrationSchema = z
       .min(1, { message: "Pre Money valuation is required" }),
     tos: z
       .boolean({
-        required_error: "Please confirm you have read the Terms and Conditions",
+        required_error: "Please confirm you have read the Terms & Conditions",
       })
       .refine((val) => val, {
         message: "Please confirm you have read the Terms and Conditions",
