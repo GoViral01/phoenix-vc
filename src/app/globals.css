@@ -9,3 +9,8 @@
 .stepper_divider:not(:last-of-type)::after {
   @apply content-[''] h-2 rounded-full bg-[#EAECED] w-full block;
 }
+
+li {
+  list-style: disc;
+  list-style-position: inside;
+}

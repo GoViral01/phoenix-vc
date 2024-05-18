@@ -36,21 +36,54 @@ function PrivacyPolicy() {
         </div>
 
         <div className="mb-10">
-          <h2 className="font-bold sm:text-lg mb-3">1. Introduction</h2>
-          <p className="text-sm sm:text-base text-black-8">
-            [Phoenix Ventures Capital Ltd] (“we,” “us,” or “our”) is committed
-            to protecting the privacy of our website visitors, investors, and
-            business partners. This Privacy Policy explains how we collect, use,
-            disclose, and protect your personal information when you visit our
-            website [
-            <Link
-              href="/"
-              className="underline text-primary-dark hover:text-primary"
-            >
-              www.phoenixvc.uk
-            </Link>
-            ] (the “Website”).
-          </p>
+          <h2 className="font-bold sm:text-lg mb-3">
+            2. Information We Collect
+          </h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>
+              We collect two types of information: Personal Information and
+              Non-Personal Information.
+            </p>
+            <ul>
+              <li className="mt-4">
+                <strong>Personal Information:</strong> This includes your name,
+                email address, phone number, company name, job title, and any
+                other information that identifies you as an individual.
+              </li>
+              <li className="mt-4">
+                <strong>Non-Personal Information:</strong> This includes your
+                browser type, device type, operating system, IP address, and
+                website usage data
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">
+            3. How We Use Your Information
+          </h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>We use your information for the following purposes:</p>
+            <ul>
+              <li className="mt-4">
+                Respond to your inquiries and provide customer support Send
+                newsletters, updates, and marketing materials Analyze website
+                usage and improve our services Comply with legal obligations and
+                regulatory requirements Protect our rights, property, and safety
+              </li>
+              <li className="mt-4">
+                Send newsletters, updates, and marketing materials
+              </li>
+              <li className="mt-4">
+                Analyze website usage and improve our services
+              </li>
+              <li className="mt-4">
+                Comply with legal obligations and regulatory requirements
+              </li>
+              <li className="mt-4">Protect our rights, property, and safety</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
