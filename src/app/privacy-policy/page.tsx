@@ -3,7 +3,7 @@ import React from "react";
 
 function PrivacyPolicy() {
   return (
-    <div className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
+    <div className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 mx-auto">
       <div className="mb-16">
         <h1 className="text-black-12 text-2xl sm:text-3xl xl:text-[48px] font-semibold sm:leading-[48px]">
           Privacy Policy
@@ -61,16 +61,32 @@ function PrivacyPolicy() {
 
         <div className="mb-10">
           <h2 className="font-bold sm:text-lg mb-3">
+            2.1. Information Sharing
+          </h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>We may share your information with:</p>
+            <ul>
+              <li className="mt-4">
+                Our affiliates, partners, and service providers
+              </li>
+              <li className="mt-4">Legal and regulatory authorities</li>
+              <li className="mt-4">Third-party vendors and contractors</li>
+              <li className="mt-4">
+                In the event of a merger, acquisition, or bankruptcy{" "}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">
             3. How We Use Your Information
           </h2>
           <div className="text-sm sm:text-base text-black-8">
             <p>We use your information for the following purposes:</p>
             <ul>
               <li className="mt-4">
-                Respond to your inquiries and provide customer support Send
-                newsletters, updates, and marketing materials Analyze website
-                usage and improve our services Comply with legal obligations and
-                regulatory requirements Protect our rights, property, and safety
+                Respond to your inquiries and provide customer support
               </li>
               <li className="mt-4">
                 Send newsletters, updates, and marketing materials
@@ -83,6 +99,103 @@ function PrivacyPolicy() {
               </li>
               <li className="mt-4">Protect our rights, property, and safety</li>
             </ul>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">4. Data Security</h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>
+              We implement appropriate technical and organizational measures to
+              ensure the security and confidentiality of your information,
+              including:
+            </p>
+            <ul>
+              <li className="mt-4">Encryption</li>
+              <li className="mt-4">Firewalls</li>
+              <li className="mt-4">Access controls</li>
+              <li className="mt-4">Secure servers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">5. Data Retention</h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>
+              We retain your information for as long as necessary to fulfill the
+              purposes outlined in this Privacy Policy unless a longer retention
+              period is required by law.
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">6. Your rights</h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>You have the right to:</p>
+            <ul>
+              <li className="mt-4">
+                Access and correct your personal information
+              </li>
+              <li className="mt-4">
+                Request deletion of your personal information
+              </li>
+              <li className="mt-4">
+                Object to or restrict processing of your personal information
+              </li>
+              <li className="mt-4">
+                Request a copy of your personal information in a structured,
+                machine-readable format
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">
+            7. Changes to This Privacy Policy
+          </h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>
+              We may update this Privacy Policy periodically and will notify you
+              of significant changes through our Website or email.
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">8. Contact Us</h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>
+              If you have questions or concerns about this Privacy Policy,
+              please contact us at [
+              <a
+                className="underline text-primary-dark hover:text-primary"
+                href="mailto:info@phoenixventurecapital.uk"
+              >
+                info@phoenixventurecapital.uk
+              </a>
+              ] or [ contact phone number ].
+            </p>
+          </div>
+        </div>
+
+        <div className="mb-10">
+          <h2 className="font-bold sm:text-lg mb-3">Effective Date</h2>
+          <div className="text-sm sm:text-base text-black-8">
+            <p>[April 1ST, 2024]</p>
+
+            <p className="mt-4">
+              Please read the{" "}
+              <Link
+                className="underline text-primary-dark hover:text-primary"
+                href="/terms-of-service"
+              >
+                Phoenix ventures Capital Ltd Terms of Service
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </div>
