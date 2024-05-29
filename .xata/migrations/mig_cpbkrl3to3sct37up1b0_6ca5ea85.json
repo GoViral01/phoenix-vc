@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpbkrl3to3sct37up1b0",
+  "parentID": "mig_cpbkribto3sct37up190",
+  "checksum": "1:6ca5ea852aadfe7a32d11467528f4a891ec0697521130709aef7b07ef962f9a6",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "last_name",
+          "type": "string"
+        },
+        "table": "Investors"
+      }
+    }
+  ]
+}

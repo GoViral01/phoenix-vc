@@ -1,0 +1,12 @@
+{
+  "id": "mig_cpbkqji3jocu8ojo3nvg",
+  "parentID": "mig_cp1muliiarusft7jv2g0",
+  "checksum": "1:cd30818ad920184705d32ad0238fcea0227faef368d3d8b8d822c2318f4f092d",
+  "operations": [
+    {
+      "addTable": {
+        "table": "Tes"
+      }
+    }
+  ]
+}

@@ -35,6 +35,18 @@ const tables = [
       { name: "other_niche", type: "string" },
     ],
   },
+  {
+    name: "Investors",
+    columns: [
+      { name: "first_name", type: "string" },
+      { name: "last_name", type: "string" },
+      { name: "contact_number", type: "string" },
+      { name: "email", type: "email" },
+      { name: "address", type: "string" },
+      { name: "linkedIn", type: "string" },
+      { name: "background", type: "string" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -43,8 +55,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Founders = InferredTypes["Founders"];
 export type FoundersRecord = Founders & XataRecord;
 
+export type Investors = InferredTypes["Investors"];
+export type InvestorsRecord = Investors & XataRecord;
+
 export type DatabaseSchema = {
   Founders: FoundersRecord;
+  Investors: InvestorsRecord;
 };
 
 const DatabaseClient = buildClient();

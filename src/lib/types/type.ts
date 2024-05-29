@@ -160,6 +160,50 @@ export const founderRegistrationSchema = z.object({
     .min(1, { message: "Pre Money valuation is required" }),
 });
 
+export const investorsLoginSchema = z.object({
+  first_name: z
+    .string()
+    .min(3, { message: "First name must be at least 3 characters." }),
+  last_name: z
+    .string({ required_error: "Last name is required" })
+    .min(3, { message: "Last name must be at least 3 characters." }),
+  email: z
+    .string({ required_error: "Email is required" })
+    .email({ message: "Please enter a valid email address." }),
+  contact_number: z.string().refine((value) => isMobilePhone(value), {
+    message: "Please enter a valid phone number",
+  }),
+  address: z.string().min(1, { message: "Address is required" }),
+  linkedIn: z
+    .string({ required_error: "LinkedIn is required" })
+    .refine(
+      (url) => isURL(url, { require_protocol: false }),
+      "Invalid linkedIn url"
+    )
+    .refine(
+      (url) => /(https?:\/\/)?(.*?\.)?linkedin\.com\/in\/[\w-_]+\/?$/,
+      "Invalid linkedin profile url"
+    ),
+  background: z
+    .string({
+      required_error: "Name is required",
+      invalid_type_error: "Name must be a string",
+    })
+    .min(3, { message: "Your story must be at least 20 characters long." }),
+  tos: z.boolean().refine((val) => val === true, {
+    message: "Please confirm you have read the Terms and Conditions",
+  }),
+  riskPolicy: z.boolean().refine((val) => val === true, {
+    message: "Please confirm you have read the risk warning",
+  }),
+  legal: z.boolean().refine((val) => val === true, {
+    message:
+      "Please confirm you have consulted with your legal and financial advisors",
+  }),
+});
+
+export type TInvestorsLoginSchema = z.infer<typeof investorsLoginSchema>;
+
 export type TFounderRegistrationSchema = z.infer<
   typeof founderRegistrationSchema
 >;

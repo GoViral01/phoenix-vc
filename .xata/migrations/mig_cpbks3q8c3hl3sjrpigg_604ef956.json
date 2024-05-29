@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpbks3q8c3hl3sjrpigg",
+  "parentID": "mig_cpbks0rto3sct37up1gg",
+  "checksum": "1:604ef9563f958878d5754ce66ed5e2a5a893f2b7d59a31caccd32f87ea36cc4d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "linkedIn",
+          "type": "string"
+        },
+        "table": "Investors"
+      }
+    }
+  ]
+}

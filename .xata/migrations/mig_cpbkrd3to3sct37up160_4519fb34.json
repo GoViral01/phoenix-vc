@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpbkrd3to3sct37up160",
+  "parentID": "mig_cpbkqji3jocu8ojo3nvg",
+  "checksum": "1:4519fb34f51993e3949efc391f10001f41ac6af778d448b94c58c494c5d970c0",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "Investors",
+        "oldName": "Tes"
+      }
+    }
+  ]
+}

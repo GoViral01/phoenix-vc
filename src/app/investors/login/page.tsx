@@ -2,40 +2,18 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { ImSpinner9 } from "react-icons/im";
-
-const investorsLoginSchema = z.object({
-  first_name: z
-    .string()
-    .min(3, { message: "First name must be at least 3 characters." }),
-  last_name: z
-    .string({ required_error: "Last name is required" })
-    .min(3, { message: "Last name must be at least 3 characters." }),
-  email: z
-    .string({ required_error: "Email is required" })
-    .email({ message: "Please enter a valid email address." }),
-  location: z.string().min(1, { message: "Location is required" }),
-  tos: z.boolean().refine((val) => val === true, {
-    message: "Please confirm you have read the Terms and Conditions",
-  }),
-  riskPolicy: z.boolean().refine((val) => val === true, {
-    message: "Please confirm you have read the risk warning",
-  }),
-
-  linkedIn: z.string().optional(),
-  background: z
-    .string({
-      required_error: "Name is required",
-      invalid_type_error: "Name must be a string",
-    })
-    .min(3, { message: "Your story must be at least 20 characters long." }),
-});
-
-type TInvestorsLoginSchema = z.infer<typeof investorsLoginSchema>;
+import { TInvestorsLoginSchema, investorsLoginSchema } from "@/lib/types/type";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const InvestorsLogin = () => {
   const {
@@ -43,31 +21,14 @@ const InvestorsLogin = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
+    control,
   } = useForm<TInvestorsLoginSchema>({
     resolver: zodResolver(investorsLoginSchema),
-    mode: "onChange",
+    mode: "onTouched",
   });
 
-  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = async (
-    data
-  ) => {
-    try {
-      const res = await fetch(
-        "https://api.apispreadsheets.com/data/KVbgNvV9JGxX3lj1/",
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      );
-
-      if (res.status === 201) {
-        // SUCCESS
-        toast.success("Registration sucessful!");
-        reset();
-      }
-    } catch (err) {
-      toast.error("Something went wrong! Please try again");
-    }
+  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = (data) => {
+    return console.log(data);
   };
 
   return (
@@ -140,38 +101,112 @@ const InvestorsLogin = () => {
             </div>
           </div>
 
-          <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="email">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email address"
-              {...register("email")}
-              className="w-full rounded border border-[#D1D5DB] p-4"
-            />
-            {errors?.email && (
-              <p className="text-sm text-red-600 mt-1">
-                {errors.email.message}
-              </p>
-            )}
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="font-medium mb-1" htmlFor="email">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email address"
+                {...register("email")}
+                className="w-full rounded border border-[#D1D5DB] p-4"
+              />
+              {errors?.email && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="font-medium mb-1" htmlFor="contactNumber">
+                Contact Number
+              </label>
+              <input
+                type="text"
+                id="contactNumber"
+                placeholder="Enter your phone number"
+                {...register("contact_number")}
+                className="w-full rounded border border-[#D1D5DB] p-4"
+              />
+              {errors?.contact_number && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.contact_number.message}
+                </p>
+              )}
+            </div>
           </div>
 
+          {/* <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="font-medium mb-1" htmlFor="country">
+                Country
+              </label>
+              <Controller
+                control={control}
+                name="country"
+                render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger id="country" className="w-full gap-3">
+                      <SelectValue placeholder="Select your country" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="NG">Nigeria</SelectItem>
+                      <SelectItem value="UK">United Kingdom</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+              {errors?.country && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.country.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="font-medium mb-1" htmlFor="city">
+                City
+              </label>
+              <Controller
+                control={control}
+                name="city"
+                render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger id="city" className="w-full gap-3">
+                      <SelectValue placeholder="Select your city" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="finech">Lagos</SelectItem>
+                      <SelectItem value="biotech">Manchester</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+              {errors?.contact_number && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.contact_number.message}
+                </p>
+              )}
+            </div>
+          </div> */}
+
           <div className="mb-6">
-            <label className="font-medium mb-1" htmlFor="location">
-              Location
+            <label className="font-medium mb-1" htmlFor="address">
+              Address
             </label>
             <input
               type="text"
-              id="location"
-              placeholder="Enter your location"
-              {...register("location")}
+              id="address"
+              placeholder="Enter your address"
+              {...register("address")}
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
-            {errors?.location && (
+            {errors?.address && (
               <p className="text-sm text-red-600 mt-1">
-                {errors.location.message}
+                {errors.address.message}
               </p>
             )}
           </div>
@@ -202,7 +237,7 @@ const InvestorsLogin = () => {
               id="message"
               placeholder="Please tell us a bit about your background"
               {...register("background")}
-              className="w-full rounded border border-[#D1D5DB] p-4 resize-none hover:resize-y"
+              className="w-full rounded border border-[#D1D5DB] p-4 min-h-52 resize-none hover:resize-y"
             />
             {errors?.background && (
               <p className="text-sm text-red-600 mt-1">
@@ -224,16 +259,8 @@ const InvestorsLogin = () => {
                 className="mr-2"
               />
               <label htmlFor="tosCheckbox">
-                I confirm that your data is collected and stored (for more
-                details see our{" "}
-                <Link href="/privacy-policy" className="underline">
-                  Privacy Policy
-                </Link>{" "}
-                and{" "}
-                <Link href="/terms-of-service" className="underline">
-                  Terms of Service
-                </Link>
-                )
+                I have read and agree to the terms and conditions outlined in
+                the offering memorandum of Phoenix Venture Capital Ltd.
               </label>
               {errors?.tos && (
                 <p className="text-sm text-red-600 mt-1">
@@ -250,7 +277,8 @@ const InvestorsLogin = () => {
                 className="mr-2"
               />
               <label htmlFor="tosConfirmCheckbox">
-                I confirm that I have read the risk warning above
+                I understand that investing in early-stage companies carries
+                inherent risks, and I am prepared to bear such risks.
               </label>
               {errors?.riskPolicy && (
                 <p className="text-sm text-red-600 mt-1">
@@ -258,18 +286,22 @@ const InvestorsLogin = () => {
                 </p>
               )}
             </div>
-
-            <div className="text-xs text-black-8 mb-8">
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Mauris cursus nisi eget
-                tellus sagittis. Ultrices tristique eget velit ipsum lacus
-                cursus adipiscing sed. Malesuada et commodo velit donec vitae
-                ligula. Vel feugiat in pellentesque lacinia sem sagittis tempus.
-                Viverra arcu consectetur sed risus tempor odio risus viverra
-                aliquam. Vel pretium ut morbi maecenas odio condimentum purus
-                ut. Cras et condimentum morbi malesuada. Vel nibh blandit
-                scelerisque ut etiam egestas lorem tincidunt.
-              </p>
+            <div className="mb-6">
+              <input
+                type="checkbox"
+                id="legal"
+                {...register("legal")}
+                className="mr-2"
+              />
+              <label htmlFor="legal">
+                I acknowledge that I have consulted with legal and financial
+                advisors regarding this investment opportunity.
+              </label>
+              {errors?.legal && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.legal.message}
+                </p>
+              )}
             </div>
 
             <button

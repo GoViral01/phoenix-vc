@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpbkrnrto3sct37up1dg",
+  "parentID": "mig_cpbkrl3to3sct37up1b0",
+  "checksum": "1:76ed3fb9410b12b4df657ac4ccc9ea9e555dfc2e5819aed3fd7555563c322791",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "contact_number",
+          "type": "string"
+        },
+        "table": "Investors"
+      }
+    }
+  ]
+}
