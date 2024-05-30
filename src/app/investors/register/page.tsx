@@ -57,14 +57,6 @@ const InvestorsLogin = () => {
           <h1 className="text-black-12 text-2xl sm:text-3xl xl:text-[48px] mb-6 font-semibold sm:leading-[48px]">
             Investor Registration
           </h1>
-          <div className="text-sm sm:text-base text-black-8">
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Est enim quis pretium
-              consectetur libero lacus nam morbi. Dignissim fringilla quisque
-              purus egestas in nibh nunc sociis. Lacus hendrerit tortor est sed
-              amet.
-            </p>
-          </div>
         </div>
 
         <div className="rounded-lg text-center text-white  p-4 my-10 md:my-16 bg-[#F39C12]">

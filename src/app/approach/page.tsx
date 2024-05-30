@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return (
     <div>
-      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
+      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#FCFCFC]">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <h2 className="text-black-12 text-2xl sm:text-4xl  xl:text-5xl  mb-6 font-semibold sm:leading-[140%] max-w-3xl">
             Empowering AI innovation through collaborative support and ethical
@@ -23,7 +23,7 @@ const page = () => {
         </div>
       </section>
 
-      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28 bg-[#F0F0F0]">
+      <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
         <div className="max-w-2xl">
           <span className="uppercase text-black-light text-xs sm:text-sm">
             Our approach

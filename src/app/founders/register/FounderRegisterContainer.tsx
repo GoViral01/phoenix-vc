@@ -80,10 +80,9 @@ const FounderRegisterContainer = () => {
           </h1>
           <div className="text-sm sm:text-base text-black-8">
             <p>
-              Lorem ipsum dolor sit amet consectetur. Est enim quis pretium
-              consectetur libero lacus nam morbi. Dignissim fringilla quisque
-              purus egestas in nibh nunc sociis. Lacus hendrerit tortor est sed
-              amet.
+              Welcome to Phoenix VC! We are thrilled to have you join us. To
+              ensure we provide the best support possible, please take a moment
+              to complete the form below
             </p>
           </div>
         </div>

@@ -128,7 +128,9 @@ const Footer = () => {
           <div>
             <h2 className="uppercase mb-5 text-black-light">Visit us</h2>
             <p className="text-sm font-semibold">
-              123 Main Street, <br /> Anytown, USA 12345
+              71-75 Shelton street Covent <br />
+              garden london WC2H9JQ, <br />
+              United kingdom
             </p>
           </div>
         </div>

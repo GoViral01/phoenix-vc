@@ -67,194 +67,208 @@ const ContactForm = ({ onFinish }: Props) => {
   const onSubmit = handleSubmit(onFinish);
 
   return (
-    <form onSubmit={onSubmit} aria-label="founders registration form">
-      <div>
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <div>
+    <div>
+      <h2 className="text-black-12 mb-6 md:text-xl font-semibold">
+        Contact Details
+      </h2>
+      <form onSubmit={onSubmit} aria-label="founders registration form">
+        <div>
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <FormLabel
+                inputId="firstName"
+                labelText="First name"
+                required={true}
+              />
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Enter your first name"
+                {...register("first_name")}
+                className="w-full rounded border border-[#D1D5DB] p-4"
+              />
+              {errors?.first_name && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.first_name.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <FormLabel
+                inputId="lastName"
+                labelText="Last name"
+                required={true}
+              />
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Enter your last name"
+                {...register("last_name")}
+                className="w-full rounded border border-[#D1D5DB] p-4"
+              />
+              {errors?.last_name && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.last_name.message}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <FormLabel inputId="email" labelText="Email" required={true} />
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email address"
+              {...register("email", {
+                onChange(event) {
+                  setIsValidatingEmail(true);
+                  clearErrors("root.emailAlreadyExists");
+                  debouncedOnEmailChanaged(event.target.value);
+                },
+              })}
+              className="w-full rounded border border-[#D1D5DB] p-4"
+            />
+            {(errors?.email || errors.root?.emailAlreadyExists) && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.email?.message ||
+                  errors.root?.emailAlreadyExists.message}
+              </p>
+            )}
+
+            {!errors.email &&
+              !errors.root?.emailAlreadyExists &&
+              isValidatingEmail && (
+                <p className="text-sm text-green-600 mt-1">Validating</p>
+              )}
+          </div>
+
+          <div className="mb-6">
             <FormLabel
-              inputId="firstName"
-              labelText="First name"
+              inputId="phoneNumber"
+              labelText="Phone number"
               required={true}
             />
             <input
               type="text"
-              id="firstName"
-              placeholder="Enter your first name"
-              {...register("first_name")}
+              id="phoneNumber"
+              placeholder="+2348123424823"
+              {...register("phone_number")}
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
-            {errors?.first_name && (
+            {errors?.phone_number && (
               <p className="text-sm text-red-600 mt-1">
-                {errors.first_name.message}
+                {errors.phone_number.message}
               </p>
             )}
           </div>
 
-          <div>
+          <div className="mb-6">
             <FormLabel
-              inputId="lastName"
-              labelText="Last name"
+              inputId="location"
+              labelText="Location"
               required={true}
             />
             <input
               type="text"
-              id="lastName"
-              placeholder="Enter your last name"
-              {...register("last_name")}
+              id="location"
+              placeholder="Ikeja, Lagos"
+              {...register("location")}
               className="w-full rounded border border-[#D1D5DB] p-4"
             />
-            {errors?.last_name && (
+            {errors?.location && (
               <p className="text-sm text-red-600 mt-1">
-                {errors.last_name.message}
+                {errors.location.message}
+              </p>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <FormLabel
+              inputId="linkedIn"
+              labelText="LinkedIn"
+              required={true}
+            />
+            <input
+              type="text"
+              id="linkedIn"
+              placeholder="https://www.linkedin.com/my-profile"
+              {...register("linkedIn")}
+              className="w-full rounded border border-[#D1D5DB] p-4"
+            />
+            {errors?.linkedIn && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.linkedIn.message}
+              </p>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <label className="font-medium mb-1" htmlFor="twitter">
+              Twitter (optional)
+            </label>
+            <input
+              type="text"
+              id="twitter"
+              placeholder="https://www.twitter.com/my-profile"
+              {...register("twitter")}
+              className="w-full rounded border border-[#D1D5DB] p-4"
+            />
+            {errors?.twitter && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.twitter.message}
+              </p>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <label className="font-medium mb-1" htmlFor="instagram">
+              Instagram (Optional)
+            </label>
+            <input
+              type="text"
+              id="instagram"
+              placeholder="https://www.instagram.com/my-profile"
+              {...register("instagram")}
+              className="w-full rounded border border-[#D1D5DB] p-4"
+            />
+            {errors?.instagram && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.instagram.message}
+              </p>
+            )}
+          </div>
+
+          <div className="mb-6">
+            <label className="font-medium mb-1" htmlFor="facebook">
+              Facebook (Optional)
+            </label>
+            <input
+              type="text"
+              id="facebook"
+              placeholder="https://www.facebook.com/my-profile"
+              {...register("facebook")}
+              className="w-full rounded border border-[#D1D5DB] p-4"
+            />
+            {errors?.facebook && (
+              <p className="text-sm text-red-600 mt-1">
+                {errors.facebook.message}
               </p>
             )}
           </div>
         </div>
 
-        <div className="mb-6">
-          <FormLabel inputId="email" labelText="Email" required={true} />
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email address"
-            {...register("email", {
-              onChange(event) {
-                setIsValidatingEmail(true);
-                clearErrors("root.emailAlreadyExists");
-                debouncedOnEmailChanaged(event.target.value);
-              },
-            })}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {(errors?.email || errors.root?.emailAlreadyExists) && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.email?.message || errors.root?.emailAlreadyExists.message}
-            </p>
-          )}
-
-          {!errors.email &&
-            !errors.root?.emailAlreadyExists &&
-            isValidatingEmail && (
-              <p className="text-sm text-green-600 mt-1">Validating</p>
-            )}
-        </div>
-
-        <div className="mb-6">
-          <FormLabel
-            inputId="phoneNumber"
-            labelText="Phone number"
-            required={true}
-          />
-          <input
-            type="text"
-            id="phoneNumber"
-            placeholder="+2348123424823"
-            {...register("phone_number")}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {errors?.phone_number && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.phone_number.message}
-            </p>
-          )}
-        </div>
-
-        <div className="mb-6">
-          <FormLabel inputId="location" labelText="Location" required={true} />
-          <input
-            type="text"
-            id="location"
-            placeholder="Ikeja, Lagos"
-            {...register("location")}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {errors?.location && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.location.message}
-            </p>
-          )}
-        </div>
-
-        <div className="mb-6">
-          <FormLabel inputId="linkedIn" labelText="LinkedIn" required={true} />
-          <input
-            type="text"
-            id="linkedIn"
-            placeholder="https://www.linkedin.com/my-profile"
-            {...register("linkedIn")}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {errors?.linkedIn && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.linkedIn.message}
-            </p>
-          )}
-        </div>
-
-        <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="twitter">
-            Twitter (optional)
-          </label>
-          <input
-            type="text"
-            id="twitter"
-            placeholder="https://www.twitter.com/my-profile"
-            {...register("twitter")}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {errors?.twitter && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.twitter.message}
-            </p>
-          )}
-        </div>
-
-        <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="instagram">
-            Instagram (Optional)
-          </label>
-          <input
-            type="text"
-            id="instagram"
-            placeholder="https://www.instagram.com/my-profile"
-            {...register("instagram")}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {errors?.instagram && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.instagram.message}
-            </p>
-          )}
-        </div>
-
-        <div className="mb-6">
-          <label className="font-medium mb-1" htmlFor="facebook">
-            Facebook (Optional)
-          </label>
-          <input
-            type="text"
-            id="facebook"
-            placeholder="https://www.facebook.com/my-profile"
-            {...register("facebook")}
-            className="w-full rounded border border-[#D1D5DB] p-4"
-          />
-          {errors?.facebook && (
-            <p className="text-sm text-red-600 mt-1">
-              {errors.facebook.message}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <FormNavigation
-        hasPrev={false}
-        hasNext={true}
-        nextBtnProps={{
-          disabled: !isFormValid || isValidatingEmail,
-          type: "submit",
-        }}
-      />
-    </form>
+        <FormNavigation
+          hasPrev={false}
+          hasNext={true}
+          nextBtnProps={{
+            disabled: !isFormValid || isValidatingEmail,
+            type: "submit",
+          }}
+        />
+      </form>
+    </div>
   );
 };
 
