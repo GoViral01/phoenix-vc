@@ -24,9 +24,9 @@ const page = () => {
 
         <div className="text-sm sm:text-base text-black-8">
           <p>
-            Lorem ipsum dolor sit amet consectetur. Est enim quis pretium
-            consectetur libero lacus nam morbi. Dignissim fringilla quisque
-            purus egestas in nibh nunc
+            Join a robust AI community and access funding, knowledge, and
+            networks for startup founders. Sign up now to leverage capital, gain
+            a competitive edge, and forge valuable connections.
           </p>
         </div>
 
