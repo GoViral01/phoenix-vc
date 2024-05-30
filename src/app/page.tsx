@@ -41,15 +41,24 @@ export default function Home() {
 
               <div className="text-sm sm:text-base text-black-8">
                 <p>
-                  Our journey started with a strong belief in AI's potential to
-                  transform industries and drive positive change. This led us to
-                  create a dynamic ecosystem where innovative minds can thrive
+                  PHOENIX VC is a premier venture capital hub designed to bridge
+                  the gap between visionary startups and savvy investors.
                 </p>
                 <p className="mt-4">
-                  At Phoenix VC, our commitment to our community's success sets
-                  us apart. We offer tailored support, mentorship, and funding
-                  opportunities to AI startups, while connecting investors with
-                  promising ventures that match their goals.
+                  First of its kind in the artificial intelligence ecosystem,
+                  PHOENIX VC is committed to fostering innovation and driving
+                  economic growth in key sectors like Real Estate, Governance,
+                  banking and finance and sport betting through chat bot
+                  automations and algorithms that analyze and predict user
+                  patterns. Phoenix VC Ltd provides a dynamic platform for
+                  strategic partnerships, funding opportunities, and mentorship.
+                </p>
+                <p className="mt-4">
+                  With a parent company (PHOENIX VENTURES CAPITAL LIMITED)
+                  headquartered in the United Kingdom and a dynamic team of
+                  experts from various fields, led by a change and
+                  sustainability expert, Phoenix VC is positioned to establish
+                  partnerships that produce global exponential growth.
                 </p>
               </div>
 

@@ -8,16 +8,16 @@ interface IBenefits {
 const WhyChooseUs = () => {
   const OUR_BENEFITS: IBenefits[] = [
     {
-      heading: "Support for AI Innovstors",
-      text: "Phoenix VC is committed to providing comprehensive support to AI innovators from concept to market success.",
+      heading: "Support for AI Innovators and Tech Startups",
+      text: "Phoenix VC is dedicated to offering top-tier support to AI innovators and tech startups,  transforming their ideas into tangible successes.",
     },
     {
       heading: "Strategic Partnerships",
-      text: "Investors benefit from strategic partnerships established by Phoenix VC with leading industry players, accelerators, and academic institutions.",
+      text: "Investors who partner with Phoenix VC can reap the benefits of our strategic collaborations  with top accelerators, incubators, and academic institutions.",
     },
     {
       heading: "Experienced Team",
-      text: "Phoenix VC is led by a seasoned team of professionals with deep expertise in venture capital and technology.",
+      text: "Phoenix VC is led by a team of experienced professionals with decades of expertise in  venture capital, finance, and technology.",
     },
   ];
 

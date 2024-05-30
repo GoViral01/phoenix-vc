@@ -11,15 +11,16 @@ const Investment = () => {
             Investment opportunities
           </span>
           <h2 className="text-black-12 text-2xl sm:text-3xl xl:text-[40px] mb-6 mt-8 md:mt-10 font-semibold sm:leading-[48px]">
-            Expanding AI-Powered Financial Analytics
+            Phoenix VC Fund 1
           </h2>
 
           <div className="text-sm sm:text-base text-black-8">
             <p>
-              The SFC Angel Fund SEIS allows you to invest in some of the most
-              innovative young companies in the UK, receive full SEIS tax
-              benefits on your investment, and mitigate your risk through
-              portfolio diversification.
+              At our company, we use artificial intelligence to shake up the
+              norm. We're crafting cutting edge solutions and paving the way for
+              the future of our industry. Through partnerships, investments, and
+              teamwork, we're taking the lead in making a positive impact,
+              enriching lives, and driving economic growth.
             </p>
           </div>
 
@@ -28,7 +29,7 @@ const Investment = () => {
               <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
                 Raising
               </h3>
-              <strong className="text-sm sm:text-base">$3m</strong>
+              <strong className="text-sm sm:text-base">$50 million</strong>
             </div>
             <div>
               <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
@@ -43,7 +44,7 @@ const Investment = () => {
           <div className="flex gap-5 flex-col sm:flex-row mt-10">
             <LinkButton
               buttonText="Become an Investor"
-              href="/investors/login"
+              href="/investors/registration"
               aria-label="learn more about expansing AI powered financial analytics"
               className="bg-primary text-white hover:bg-[#003154] h-11 sm:h-14 text-sm sm:tex-base"
             />

@@ -20,7 +20,7 @@ const VettedStarups = () => {
             Explore our curated directory of vetted AI startups, showcasing
             cutting-edge technologies and promising ventures in diverse
             industries. Find the next wave of innovation and investment
-            opportunities with confidence.
+            opportunities with confidence
           </p>
         </div>
       </div>

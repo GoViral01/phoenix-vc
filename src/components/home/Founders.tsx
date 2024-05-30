@@ -12,34 +12,40 @@ const Founders = () => {
             for founders
           </span>
           <h2 className="text-white text-2xl sm:text-3xl xl:text-[40px] mt-5 md:mt-10 font-semibold sm:leading-[48px] mb-6">
-            Access Funding, Expertise, and Connections
+            Gain Access to Funding Knowledge and Networks
           </h2>
           <p className="text-sm sm:text-base text-black-light">
-            Welcome to Phoenix VC, where startup dreams soar. Submit your pitch
-            deck to connect with investors and join a supportive community that
-            will elevate your startup in the world of AI innovation.
+            At Phoenix Venture Capital LTD, we understand that each client's
+            investment journey is unique. That's why we've developed a
+            streamlined client engagement process to ensure a seamless
+            experience from initial consultation to investment execution.
           </p>
 
           <div className="mt-10 md:mt-16 text-[#D9D9D9] text-sm sm:text-base">
             <ul className="list-none">
               <li className="flex items-center gap-2 mb-6">
                 <FaRegCircleCheck />
-                Access to essential funding and resources
+                Expertise in key industries
               </li>
 
               <li className="flex items-center gap-2 mb-6">
                 <FaRegCircleCheck />
-                Strategic partnerships and industry connections
+                Strategic Guidance
               </li>
 
               <li className="flex items-center gap-2 mb-6">
                 <FaRegCircleCheck />
-                Fostering innovation and supporting founders
+                Thorough Due Diligence
               </li>
 
               <li className="flex items-center gap-2 mb-6">
                 <FaRegCircleCheck />
-                Hands-on support and guidance
+                Diversity and Inclusion
+              </li>
+
+              <li className="flex items-center gap-2 mb-6">
+                <FaRegCircleCheck />
+                Post-fund Support
               </li>
             </ul>
           </div>
