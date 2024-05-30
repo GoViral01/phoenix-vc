@@ -1,9 +1,13 @@
 "use server";
 import { getXataClient } from "@/xata";
-import { founderRegistrationSchema } from "@/lib/types/type";
+import {
+  founderRegistrationSchema,
+  investorsLoginSchema,
+} from "@/lib/types/type";
 import { ZodError } from "zod";
 import isEmail from "validator/lib/isEmail";
 
+// founder registration
 export async function handleRegisterFounder(formData: FormData) {
   try {
     const { pitch_deck, ...data } = founderRegistrationSchema.parse(
@@ -38,6 +42,7 @@ export async function handleRegisterFounder(formData: FormData) {
   }
 }
 
+// get Founders email - verify if it exists or not
 export async function getRecordByEmail(email: string) {
   email = email.trim();
   const client = getXataClient();
@@ -62,4 +67,41 @@ export async function getRecordByEmail(email: string) {
     exist: false,
     message: "Record with email already does not exists",
   };
+}
+
+// investors registration
+export async function handleRegisterInvestor(formData: FormData) {
+  try {
+    const { ...data } = investorsLoginSchema.parse(
+      Object.fromEntries(formData.entries())
+    );
+
+    const client = getXataClient();
+
+    await client.db.Investors.create({
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      contact_number: data.contact_number,
+      address: data.address,
+      linkedIn: data.linkedIn,
+      background: data.background,
+    });
+
+    return {
+      success: true,
+    };
+  } catch (e) {
+    console.error(e);
+    if (e instanceof ZodError) {
+      return {
+        error: "Invalid form values",
+        errorFields: e.formErrors.fieldErrors,
+      };
+    } else {
+      return {
+        error: e instanceof Error ? e.message : "Internal server error",
+      };
+    }
+  }
 }

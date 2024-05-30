@@ -186,20 +186,34 @@ export const investorsLoginSchema = z.object({
     ),
   background: z
     .string({
-      required_error: "Name is required",
-      invalid_type_error: "Name must be a string",
+      required_error: "Background is required",
+      invalid_type_error: "Background must be a string",
     })
     .min(3, { message: "Your story must be at least 20 characters long." }),
-  tos: z.boolean().refine((val) => val === true, {
-    message: "Please confirm you have read the Terms and Conditions",
-  }),
-  riskPolicy: z.boolean().refine((val) => val === true, {
-    message: "Please confirm you have read the risk warning",
-  }),
-  legal: z.boolean().refine((val) => val === true, {
-    message:
-      "Please confirm you have consulted with your legal and financial advisors",
-  }),
+  tos: z
+    .string({
+      invalid_type_error:
+        "Please confirm you have read the Terms and Conditions",
+    })
+    .refine((val) => val, {
+      message: "Please confirm you have read the Terms and Conditions",
+    }),
+  riskPolicy: z
+    .string({
+      invalid_type_error: "Please confirm you have read the risk warning",
+    })
+    .refine((val) => val, {
+      message: "Please confirm you have read the risk warning",
+    }),
+  legal: z
+    .string({
+      invalid_type_error:
+        "Please confirm you have consulted with your legal and financial advisors",
+    })
+    .refine((val) => val, {
+      message:
+        "Please confirm you have consulted with your legal and financial advisors",
+    }),
 });
 
 export type TInvestorsLoginSchema = z.infer<typeof investorsLoginSchema>;

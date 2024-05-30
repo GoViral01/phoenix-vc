@@ -14,12 +14,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { handleRegisterInvestor } from "@/app/action";
 
 const InvestorsLogin = () => {
   const {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors, isSubmitting },
     control,
   } = useForm<TInvestorsLoginSchema>({
@@ -27,8 +29,33 @@ const InvestorsLogin = () => {
     mode: "onTouched",
   });
 
-  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = (data) => {
-    return console.log(data);
+  const handleSubmitLogin: SubmitHandler<TInvestorsLoginSchema> = async (
+    data
+  ) => {
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      formData.set(key, value);
+    });
+    const response = await handleRegisterInvestor(formData);
+
+    if (response?.errorFields) {
+      Object.entries(response.errorFields).forEach(([fieldName, errors]) =>
+        setError(fieldName as keyof TInvestorsLoginSchema, {
+          message: errors?.[0],
+        })
+      );
+    }
+
+    if (response?.error) {
+      setError("root.serverError", {
+        message: response.error,
+      });
+    }
+
+    if (response.success) {
+      reset();
+      toast.success("Registration successfil");
+    }
   };
 
   return (
@@ -257,6 +284,7 @@ const InvestorsLogin = () => {
                 id="tosCheckbox"
                 {...register("tos")}
                 className="mr-2"
+                value="true"
               />
               <label htmlFor="tosCheckbox">
                 I have read and agree to the terms and conditions outlined in
@@ -275,6 +303,7 @@ const InvestorsLogin = () => {
                 id="tosConfirmCheckbox"
                 {...register("riskPolicy")}
                 className="mr-2"
+                value="true"
               />
               <label htmlFor="tosConfirmCheckbox">
                 I understand that investing in early-stage companies carries
@@ -292,6 +321,7 @@ const InvestorsLogin = () => {
                 id="legal"
                 {...register("legal")}
                 className="mr-2"
+                value="true"
               />
               <label htmlFor="legal">
                 I acknowledge that I have consulted with legal and financial
