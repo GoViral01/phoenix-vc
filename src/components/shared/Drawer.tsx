@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-// import { BsMenuButtonWideFill } from "@/components/ui/BsMenuButtonWideFill"
 import {
   Drawer,
   DrawerClose,
@@ -68,6 +67,7 @@ export function NavDrawer() {
               href={link.href}
               key={link.name}
               role="menuitem"
+              onClick={() => setOpen(false)}
               className={twMerge(
                 "uppercase text-sm font-semibold hover:text-primary transition duration-300",
                 pathname === link.href && "text-primary"

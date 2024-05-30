@@ -12,7 +12,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Phoenix VC",
-  description: "",
+  description:
+    "At Phoenix VC, we empower AI innovators to realize their ideas and shape the future of technology.",
 };
 
 export default function RootLayout({

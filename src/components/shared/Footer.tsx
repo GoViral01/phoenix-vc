@@ -1,12 +1,16 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { FaXTwitter } from "react-icons/fa6";
 import {
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io";
+import { twMerge } from "tailwind-merge";
 
 interface INav {
   name: string;
@@ -66,6 +70,8 @@ const Footer = () => {
     },
   ];
 
+  const pathname = usePathname();
+
   return (
     <footer className="bg-[#F5F5F5] text-black-8 px-5 sm:px-10 xl:px-28 flex items-center py-20">
       <div className="w-full">
@@ -91,7 +97,10 @@ const Footer = () => {
                   href={link.href}
                   key={link.name}
                   role="menuitem"
-                  className="text-sm font-semibold hover:text-black-light transition duration-300"
+                  className={twMerge(
+                    "text-sm font-semibold hover:text-black-light transition duration-300",
+                    pathname === link.href && "text-primary"
+                  )}
                 >
                   {link.name}
                 </Link>

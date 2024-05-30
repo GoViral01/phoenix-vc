@@ -1,15 +1,14 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   TFounderRegistrationSchema,
   founderRegistrationSchema,
 } from "@/lib/types/type";
-import { UseFormRegister, useForm, useFormContext } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 import debounce from "lodash.debounce";
 import { getRecordByEmail } from "@/app/action";
 import FormNavigation from "@/app/founders/register/FormNavigation";
-import { ZodSchema, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import FormRequiredIndicator from "../shared/FormLabel";
 import FormLabel from "../shared/FormLabel";
 
 interface Props {

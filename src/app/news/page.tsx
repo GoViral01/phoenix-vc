@@ -1,6 +1,6 @@
+import React from "react";
 import NewsCard from "@/components/shared/NewsCard";
 import Image from "next/image";
-import React from "react";
 
 const pages = () => {
   return (

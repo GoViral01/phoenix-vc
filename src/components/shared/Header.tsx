@@ -42,14 +42,14 @@ const Header = () => {
   return (
     <header className="h-16 md:h-20 px-5 sm:px-10 xl:px-28 flex items-center border-b border-b-[#EAECED] bg-white z-[100]">
       <div className="flex gap-6 justify-between items-center w-full self-stretch">
-        <div className="w-32 md:w-40">
+        <Link href="/" className="w-32 md:w-40" title="home">
           <Image
             src="/logoNew.png"
             alt="Phoenix VC logo"
             width={500}
             height={500}
           />
-        </div>
+        </Link>
 
         <nav
           className="hidden lg:flex gap-5 xl:gap-14 items-center"

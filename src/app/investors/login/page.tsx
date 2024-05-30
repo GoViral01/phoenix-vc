@@ -1,19 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { ImSpinner9 } from "react-icons/im";
 import { TInvestorsLoginSchema, investorsLoginSchema } from "@/lib/types/type";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { handleRegisterInvestor } from "@/app/action";
 
 const InvestorsLogin = () => {
@@ -23,7 +16,6 @@ const InvestorsLogin = () => {
     reset,
     setError,
     formState: { errors, isSubmitting },
-    control,
   } = useForm<TInvestorsLoginSchema>({
     resolver: zodResolver(investorsLoginSchema),
     mode: "onTouched",
@@ -165,60 +157,6 @@ const InvestorsLogin = () => {
               )}
             </div>
           </div>
-
-          {/* <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label className="font-medium mb-1" htmlFor="country">
-                Country
-              </label>
-              <Controller
-                control={control}
-                name="country"
-                render={({ field }) => (
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger id="country" className="w-full gap-3">
-                      <SelectValue placeholder="Select your country" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="NG">Nigeria</SelectItem>
-                      <SelectItem value="UK">United Kingdom</SelectItem>
-                    </SelectContent>
-                  </Select>
-                )}
-              />
-              {errors?.country && (
-                <p className="text-sm text-red-600 mt-1">
-                  {errors.country.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="font-medium mb-1" htmlFor="city">
-                City
-              </label>
-              <Controller
-                control={control}
-                name="city"
-                render={({ field }) => (
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger id="city" className="w-full gap-3">
-                      <SelectValue placeholder="Select your city" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="finech">Lagos</SelectItem>
-                      <SelectItem value="biotech">Manchester</SelectItem>
-                    </SelectContent>
-                  </Select>
-                )}
-              />
-              {errors?.contact_number && (
-                <p className="text-sm text-red-600 mt-1">
-                  {errors.contact_number.message}
-                </p>
-              )}
-            </div>
-          </div> */}
 
           <div className="mb-6">
             <label className="font-medium mb-1" htmlFor="address">
