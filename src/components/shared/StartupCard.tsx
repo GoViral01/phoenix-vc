@@ -7,56 +7,65 @@ interface IVettedStartup {
   name: string;
   image: string;
   description: string;
-  floatingStage: string;
-  industry: string;
   href: string;
 }
 
 const StartupCard = () => {
   const VETTED_STARTUPS: IVettedStartup[] = [
     {
-      image: "/robo-assist.svg",
-      name: "RoboAssist",
+      image: "/muvarlogo.png",
+      name: "Muvar",
       description:
-        "RoboAssist offers AI-powered robotic automation solutions for industrial manufacturing and logistics, streamlining operations and optimizing efficiency...",
-      floatingStage: "Pre-Series A",
-      industry: "Fintech, Banking",
-      href: "/",
+        "UK-based pre-seed with partnerships in rail, hotel, and flight booking offers a  complete package that makes the travel experience seamless. They require an investment of  $5 million.",
+      href: "https://muvar.ai/",
     },
     {
-      image: "/fintellia.svg",
-      name: "Fintellia",
+      image: "/wellLogo.png",
+      name: "Well Inc.",
       description:
-        "Fintellia develops AI-driven predictive analytics software for financial institutions, enhancing risk management and investment decision-making.",
-      floatingStage: "Series C",
-      industry: "Biotech, Health",
-      href: "/",
+        "US-based seed company with a partnership agreement with IBM, managed by  medical and tech experts, seeking funding of $3 million",
+      href: "https://www.wellnesswits.com/",
     },
     {
-      image: "/neuroBotics.svg",
-      name: "NeuroBotics",
+      image: "/goviralLogo.png",
+      name: "Goviral",
       description:
-        "NeuroBotics develops AI-powered neurotechnology solutions for enhanced brain-computer interfaces, enabling new possibilities in healthcare.",
-      floatingStage: "Series A",
-      industry: "Healthtech",
-      href: "/",
+        "US-based seed company with a partnership agreement with IBM, managed by  medical and tech experts, seeking funding of $3 million",
+      href: "#",
+    },
+    {
+      image: "",
+      name: "Sub-Soft",
+      description:
+        "Nigerian-based pre-seed AI innovators with two commercially viable proprietary  product. They require funding of $5 million.",
+      href: "#",
+    },
+    {
+      image: "/logoNew.png",
+      name: "State-of-the-art Laboratory",
+      description:
+        "Integral to Phoenix VC’s strategy for cultivating an ecosystem  that produces cutting-edge AI products and technological services.",
+      href: "https://phoenixvc.uk/",
     },
   ];
 
   return VETTED_STARTUPS.map((startup, index) => (
     <div
       key={index}
-      className="border border-[#F0F0F0] px-4 md:px-6 pt-6 md:pt-10 rounded-lg group hover:shadow-lg"
+      className="border border-[#F0F0F0] px-4 md:px-6 pt-6 md:pt-10 rounded-lg group hover:shadow-lg flex flex-col"
     >
-      <Image
-        src={startup.image}
-        alt={startup.name}
-        width={80}
-        height={80}
-        fetchPriority="high"
-      />
+      <div className="h-16 w-52">
+        <Image
+          src={startup.image}
+          alt={startup.name}
+          width={500}
+          height={500}
+          fetchPriority="high"
+          className="w-full h-full object-contain"
+        />
+      </div>
 
-      <div className="py-6 md:py-10">
+      <div className="py-6 md:py-10 flex-1">
         <h3 className="text-black-12 font-semibold sm:text-lg md:text-xl mb-3">
           {startup.name}
         </h3>
@@ -64,7 +73,7 @@ const StartupCard = () => {
           {startup.description}
         </p>
 
-        <div className="flex justify-between gap-4 mt-6 md:mt-8">
+        {/* <div className="flex justify-between gap-4 mt-6 md:mt-8">
           <div>
             <h3 className="uppercase text-xs text-[#595959] font-semibold mb-2">
               floating stage
@@ -79,15 +88,16 @@ const StartupCard = () => {
             </h3>
             <strong className="text-sm sm:text-base">{startup.industry}</strong>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Link
         href={startup.href}
-        aria-label={`learn more about ${startup.name}`}
+        aria-label={`visit ${startup.name} website`}
+        target="_blank"
         className="group-hover:text-blue-500 flex items-center justify-between gap-3 uppercase transition duration-300 border-t border-t-[#F0F0F0] -mx-6 p-4 md:px-6 md:py-6 text-sm md:text-base text-[#595959] font-semibold"
       >
-        Learn more
+        View Website
         <FaChevronRight />
       </Link>
     </div>

@@ -7,9 +7,9 @@ const page = () => {
       <section className="py-20 xl:py-32 px-5 sm:px-10 xl:px-28">
         <div>
           <div className="max-w-2xl">
-            <h2 className="text-black-12 text-2xl sm:text-3xl xl:text-[40px] mb-6 mt-8 md:mt-10 font-semibold sm:leading-[48px]">
+            <h1 className="text-black-12 text-2xl sm:text-3xl xl:text-[40px] mb-6 mt-8 md:mt-10 font-semibold sm:leading-[48px]">
               Pioneering AI Innovation and Investment
-            </h2>
+            </h1>
 
             <div className="text-sm sm:text-base text-black-8">
               <p>
