@@ -216,8 +216,16 @@ export const investorsLoginSchema = z.object({
     }),
 });
 
+export const joinWaitlistSchema = z.object({
+  email: z
+    .string({ required_error: "Email is required" })
+    .email({ message: "Please enter a valid email address." }),
+});
+
 export type TInvestorsLoginSchema = z.infer<typeof investorsLoginSchema>;
 
 export type TFounderRegistrationSchema = z.infer<
   typeof founderRegistrationSchema
 >;
+
+export type TJoinWaitlistSchema = z.infer<typeof joinWaitlistSchema>;

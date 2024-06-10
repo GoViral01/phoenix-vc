@@ -3,6 +3,7 @@ import { getXataClient } from "@/xata";
 import {
   founderRegistrationSchema,
   investorsLoginSchema,
+  joinWaitlistSchema,
 } from "@/lib/types/type";
 import { ZodError } from "zod";
 import isEmail from "validator/lib/isEmail";
@@ -108,41 +109,35 @@ export async function handleRegisterInvestor(formData: FormData) {
 }
 
 // join waitlist
-// export async function handleJoinWaitlist(formData: FormData) {
-//   try {
-//     const { ...data } = investorsLoginSchema.parse(
-//       Object.fromEntries(formData.entries())
-//     );
+export async function handleJoinWaitlist(formData: FormData) {
+  try {
+    const { ...data } = joinWaitlistSchema.parse(
+      Object.fromEntries(formData.entries())
+    );
 
-//     const client = getXataClient();
+    const client = getXataClient();
 
-//     await client.db.Investors.create({
-//       first_name: data.first_name,
-//       last_name: data.last_name,
-//       email: data.email,
-//       contact_number: data.contact_number,
-//       address: data.address,
-//       linkedIn: data.linkedIn,
-//       background: data.background,
-//     });
+    await client.db.Waitlist.create({
+      email: data.email,
+    });
 
-//     return {
-//       success: true,
-//     };
-//   } catch (e) {
-//     console.error(e);
-//     if (e instanceof ZodError) {
-//       return {
-//         error: "Invalid form values",
-//         errorFields: e.formErrors.fieldErrors,
-//       };
-//     } else {
-//       return {
-//         error: e instanceof Error ? e.message : "Internal server error",
-//       };
-//     }
-//   }
-// }
+    return {
+      success: true,
+    };
+  } catch (e) {
+    console.error(e);
+    if (e instanceof ZodError) {
+      return {
+        error: "Invalid form values",
+        errorFields: e.formErrors.fieldErrors,
+      };
+    } else {
+      return {
+        error: e instanceof Error ? e.message : "Internal server error",
+      };
+    }
+  }
+}
 
 // get all partners - for portfolio page
 export async function getAllPartners() {

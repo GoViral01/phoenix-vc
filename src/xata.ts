@@ -56,6 +56,7 @@ const tables = [
       { name: "imageUrl", type: "file" },
     ],
   },
+  { name: "Waitlist", columns: [{ name: "email", type: "email" }] },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -70,10 +71,14 @@ export type InvestorsRecord = Investors & XataRecord;
 export type Portfolio = InferredTypes["portfolio"];
 export type PortfolioRecord = Portfolio & XataRecord;
 
+export type Waitlist = InferredTypes["Waitlist"];
+export type WaitlistRecord = Waitlist & XataRecord;
+
 export type DatabaseSchema = {
   Founders: FoundersRecord;
   Investors: InvestorsRecord;
   portfolio: PortfolioRecord;
+  Waitlist: WaitlistRecord;
 };
 
 const DatabaseClient = buildClient();

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpjaastnt96qamua3f00",
+  "parentID": "mig_cpjaanksl1dj7lng783g",
+  "checksum": "1:05e8727d63e8228235bb2a9bb1d99d996e1f78e31616fc1443f9d4a60741f171",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "email",
+          "type": "email"
+        },
+        "table": "Waitlist"
+      }
+    }
+  ]
+}

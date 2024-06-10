@@ -1,0 +1,12 @@
+{
+  "id": "mig_cpjaanksl1dj7lng783g",
+  "parentID": "mig_cpept85a5gln94l7jfv0",
+  "checksum": "1:da168abb91368c594a5b2ee97ff4b1f501d73b97e8bff23c75b482b6b2064a7b",
+  "operations": [
+    {
+      "addTable": {
+        "table": "Waitlist"
+      }
+    }
+  ]
+}
