@@ -9,7 +9,7 @@ import { handleJoinWaitlist } from "../action";
 import { toast } from "react-toastify";
 import { ImSpinner9 } from "react-icons/im";
 
-const page = () => {
+const Community = () => {
   const {
     register,
     handleSubmit,
@@ -109,4 +109,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Community;
