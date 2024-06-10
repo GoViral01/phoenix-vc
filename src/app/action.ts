@@ -7,7 +7,6 @@ import {
 } from "@/lib/types/type";
 import { ZodError } from "zod";
 import isEmail from "validator/lib/isEmail";
-import { IVettedStartup } from "@/components/shared/StartupCard";
 
 // founder registration
 export async function handleRegisterFounder(formData: FormData) {
@@ -136,25 +135,5 @@ export async function handleJoinWaitlist(formData: FormData) {
         error: e instanceof Error ? e.message : "Internal server error",
       };
     }
-  }
-}
-
-// get all partners - for portfolio page
-export async function getAllPartners() {
-  try {
-    const xata = getXataClient();
-
-    const data = await xata.db.portfolio
-      .select([
-        "companyName",
-        "description",
-        "websiteUrl",
-        "imageUrl.base64Content",
-      ])
-      .getAll();
-
-    return data;
-  } catch (e) {
-    console.error(e);
   }
 }
