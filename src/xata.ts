@@ -47,6 +47,15 @@ const tables = [
       { name: "background", type: "string" },
     ],
   },
+  {
+    name: "portfolio",
+    columns: [
+      { name: "companyName", type: "string" },
+      { name: "description", type: "string" },
+      { name: "websiteUrl", type: "string" },
+      { name: "imageUrl", type: "file" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -58,9 +67,13 @@ export type FoundersRecord = Founders & XataRecord;
 export type Investors = InferredTypes["Investors"];
 export type InvestorsRecord = Investors & XataRecord;
 
+export type Portfolio = InferredTypes["portfolio"];
+export type PortfolioRecord = Portfolio & XataRecord;
+
 export type DatabaseSchema = {
   Founders: FoundersRecord;
   Investors: InvestorsRecord;
+  portfolio: PortfolioRecord;
 };
 
 const DatabaseClient = buildClient();

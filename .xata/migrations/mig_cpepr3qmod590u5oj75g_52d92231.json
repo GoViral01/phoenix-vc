@@ -1,0 +1,12 @@
+{
+  "id": "mig_cpepr3qmod590u5oj75g",
+  "parentID": "mig_cpbks923jocu8ojo3oqg",
+  "checksum": "1:52d9223124a268d3e2a1f453a0f954b7148969050d9e1cbee104984e50bd9eea",
+  "operations": [
+    {
+      "addTable": {
+        "table": "portfolio"
+      }
+    }
+  ]
+}

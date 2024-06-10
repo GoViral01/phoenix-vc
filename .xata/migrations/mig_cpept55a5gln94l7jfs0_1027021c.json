@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpept55a5gln94l7jfs0",
+  "parentID": "mig_cpepsbqmod590u5oj790",
+  "checksum": "1:1027021ce68112d2bae8f1d0f53a2c38a263a3bcfd11df77c4d232f2fe440e53",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "imageUrl",
+        "table": "portfolio"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpeprota5gln94l7jfq0",
+  "parentID": "mig_cpeprj5a5gln94l7jfp0",
+  "checksum": "1:fba29fed748a7c62f7ac647f11a66673ff0075fbcea5455b719827aa5f878930",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "description",
+          "type": "string"
+        },
+        "table": "portfolio"
+      }
+    }
+  ]
+}

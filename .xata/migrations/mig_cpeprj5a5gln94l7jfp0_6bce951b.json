@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpeprj5a5gln94l7jfp0",
+  "parentID": "mig_cpepreda5gln94l7jfo0",
+  "checksum": "1:6bce951b76c4a0dd21a352c141487b789e1bb6ac9dd1753889019321c4be7b86",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "companyName",
+          "type": "string"
+        },
+        "table": "portfolio"
+      }
+    }
+  ]
+}

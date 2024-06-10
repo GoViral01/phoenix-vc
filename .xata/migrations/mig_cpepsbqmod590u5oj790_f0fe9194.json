@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpepsbqmod590u5oj790",
+  "parentID": "mig_cpeps6qmod590u5oj780",
+  "checksum": "1:f0fe919440cbef64cb20b973bde3603755779b710fe2dc3bf74f4e2055922a7c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "imageUrl",
+          "type": "file[]"
+        },
+        "table": "portfolio"
+      }
+    }
+  ]
+}
