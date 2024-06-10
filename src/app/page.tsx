@@ -1,10 +1,10 @@
+import Image from "next/image";
 import Founders from "@/components/home/Founders";
 import Hero from "@/components/home/Hero";
 import Investment from "@/components/home/Investment";
 import VettedStarups from "@/components/home/VettedStarups";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import LinkButton from "@/components/shared/Button";
-import Image from "next/image";
 
 export default function Home() {
   return (

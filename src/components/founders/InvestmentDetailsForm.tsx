@@ -169,8 +169,15 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
                     <SelectValue placeholder="Select your business stage" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="finech">Series A</SelectItem>
-                    <SelectItem value="biotech">Series B</SelectItem>
+                    <SelectItem value="pre-seed">Pre-seed</SelectItem>
+                    <SelectItem value="seed stage">Seed</SelectItem>
+                    <SelectItem value="series A">Series A</SelectItem>
+                    <SelectItem value="series B">Series B</SelectItem>
+                    <SelectItem value="series C and beyond">
+                      Series C and beyond
+                    </SelectItem>
+                    <SelectItem value="mezzanine">Mezzanine</SelectItem>
+                    <SelectItem value="exit">Exit</SelectItem>
                   </SelectContent>
                 </Select>
               )}
@@ -194,8 +201,16 @@ const InvestmentDetailsForm = ({ onFinish, onBack }: Props) => {
                     <SelectValue placeholder="Select your business niche" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="fintech">Fintech</SelectItem>
+                    <SelectItem value="adTech">Adtech</SelectItem>
                     <SelectItem value="biotech">Biotech</SelectItem>
+                    <SelectItem value="Cybersecurity">Cybersecurity</SelectItem>
+                    <SelectItem value="adTech">Edech</SelectItem>
+                    <SelectItem value="ecommerce">E-commerce</SelectItem>
+                    <SelectItem value="fintech">Fintech</SelectItem>
+                    <SelectItem value="health tech">Health Tech</SelectItem>
+                    <SelectItem value="HRTech">HRTech</SelectItem>
+                    <SelectItem value="proptech">Proptech</SelectItem>
+                    <SelectItem value="Saas">Saas</SelectItem>
                     <SelectItem value="others">Others</SelectItem>
                   </SelectContent>
                 </Select>
