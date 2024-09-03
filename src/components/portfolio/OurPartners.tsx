@@ -39,8 +39,8 @@ const OurPartners = async () => {
         >
           <div className="h-16 w-52">
             <Image
-              src={company.imageUrl?.url || ""}
-              alt={company.companyName || ""}
+              src={company.imageUrl?.url ?? ""}
+              alt={company.companyName ?? ""}
               width={500}
               height={500}
               fetchPriority="high"
@@ -75,7 +75,7 @@ const OurPartners = async () => {
           </div>
 
           <Link
-            href={company.websiteUrl || ""}
+            href={company.websiteUrl ?? ""}
             aria-label={`visit ${company.companyName} website`}
             target="_blank"
             className="group-hover:text-blue-500 flex items-center justify-between gap-3 uppercase transition duration-300 border-t border-t-[#F0F0F0] -mx-6 p-4 md:px-6 md:py-6 text-sm md:text-base text-[#595959] font-semibold"

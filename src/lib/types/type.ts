@@ -181,7 +181,7 @@ export const investorsLoginSchema = z.object({
       "Invalid linkedIn url"
     )
     .refine(
-      (url) => /(https?:\/\/)?(.*?\.)?linkedin\.com\/in\/[\w-_]+\/?$/,
+      (url) => /(https?:\/\/)?(.*?\.)linkedin\.com\/in\/[\w-_]+\/?$/,
       "Invalid linkedin profile url"
     ),
   background: z
